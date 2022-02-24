@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Les1.css";
+import "./Example1.css";
 import faker from "@faker-js/faker";
 
 const List = ({ children }) => {
@@ -38,7 +38,7 @@ const initialStudents = [
   },
 ];
 
-const Les1 = () => {
+const Example1 = () => {
   const [students, setStudents] = useState(initialStudents);
 
   const handleClick = () => {
@@ -71,4 +71,4 @@ const Les1 = () => {
   );
 };
 
-export default Les1;
+export default Example1;

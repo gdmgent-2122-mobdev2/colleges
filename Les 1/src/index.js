@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import Les1 from "./Les/Les1";
+import Oefening1 from "./Oefening/Oefening1";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Oefening1 />
   </React.StrictMode>,
   document.getElementById("root")
 );

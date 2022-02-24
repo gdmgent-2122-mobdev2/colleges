@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "./App.css";
+import "./Les1.css";
+import faker from "@faker-js/faker";
 
 const List = ({ children }) => {
   return <ul className="students">{children}</ul>;
@@ -37,16 +38,26 @@ const initialStudents = [
   },
 ];
 
-const App = () => {
-  const [students, setStudents] = useState([...initialStudents]);
+const Les1 = () => {
+  const [students, setStudents] = useState(initialStudents);
 
   const handleClick = () => {
-    // setClicked(true);
+    const student = {
+      name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+      image: `${faker.image.avatar()}`,
+    };
+    /* wrong, still the same array + initialStudents has changed */
+    // students.push(student);
+    // setStudents(students);
+    // console.log(initialStudents);
+
+    /* right, we create a new array, initialStudents hasn't changed */
+    setStudents([...students, student]);
   };
   return (
     <div className="App">
       <h1>Studenten ({students.length})</h1>
-      <button onClick={handleClick}>Click</button>
+      <button onClick={handleClick}>Voeg student toe</button>
       <List>
         {students.map((student) => (
           <ListItem
@@ -60,4 +71,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Les1;

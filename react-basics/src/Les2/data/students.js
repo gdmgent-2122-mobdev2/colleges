@@ -4,6 +4,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -11,6 +12,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -18,6 +20,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -25,6 +28,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -32,6 +36,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -39,6 +44,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -46,6 +52,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -53,6 +60,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -60,6 +68,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -67,6 +76,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -74,6 +84,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -81,6 +92,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -88,6 +100,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -95,6 +108,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -102,6 +116,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -109,6 +124,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -116,12 +132,14 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
   {
     name: "Maenhout Iris",
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -129,6 +147,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -136,6 +155,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -143,6 +163,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -150,6 +171,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -157,6 +179,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -164,6 +187,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -171,6 +195,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -178,6 +203,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -185,6 +211,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -192,6 +219,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -199,6 +227,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -206,6 +235,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -213,6 +243,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -220,6 +251,7 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 
   {
@@ -227,5 +259,6 @@ const students = [
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     username: "",
+    isPresent: false,
   },
 ];

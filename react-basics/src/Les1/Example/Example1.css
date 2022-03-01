@@ -1,5 +1,6 @@
 .students__item {
   display: flex;
+  cursor: pointer;
 }
 
 .students__item img {

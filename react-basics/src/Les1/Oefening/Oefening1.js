@@ -2,19 +2,6 @@ import { useState } from "react";
 import "./Oefening1.css";
 import faker from "@faker-js/faker";
 
-const Circle = ({ color, width, height }) => {
-  return (
-    <div
-      className="circle"
-      style={{
-        backgroundColor: color,
-        width: `${width}px`,
-        height: `${height}px`,
-      }}
-    ></div>
-  );
-};
-
 const initialCircles = [
   {
     width: 50,
@@ -38,12 +25,32 @@ const initialCircles = [
   },
 ];
 
+const Circle = ({ color, width, height }) => {
+  return (
+    <div
+      className="circle"
+      style={{
+        backgroundColor: color,
+        width: `${width}px`,
+        height: `${height}px`,
+      }}
+    ></div>
+  );
+};
+
 const Oefening1 = () => {
   const [circles, setCircles] = useState(initialCircles);
 
   const handleClick = () => {
-    // TODO
+    const dimension = Math.round(Math.random() * 100);
+    const circle = {
+      width: dimension,
+      height: dimension,
+      color: faker.internet.color(),
+    };
+    setCircles([...circles, circle]);
   };
+
   return (
     <div className="App">
       <h1>Cirkels ({circles.length})</h1>

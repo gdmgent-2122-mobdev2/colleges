@@ -1,0 +1,19 @@
+.app {
+  text-align: center;
+}
+
+.header nav ul {
+  display: flex;
+  justify-content: center;
+}
+
+.header nav li {
+  list-style-type: none;
+}
+
+.header nav button {
+  background: none;
+  border: none;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}

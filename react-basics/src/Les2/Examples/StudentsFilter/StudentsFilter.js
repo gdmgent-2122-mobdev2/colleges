@@ -15,7 +15,8 @@ const ListItem = ({ name, img }) => {
 };
 
 const StudentsFilter = () => {
-  const [students, setStudents] = useState(initialStudents);
+  // not necessary to have students in useState
+  const [students] = useState(initialStudents);
   const [search, setSearch] = useState("");
 
   const handleChange = (e) => {

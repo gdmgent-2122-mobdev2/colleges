@@ -11,6 +11,11 @@
   list-style-type: none;
 }
 
+.header nav li.active button {
+  font-weight: bold;
+  color: red;
+}
+
 .header nav button {
   background: none;
   border: none;

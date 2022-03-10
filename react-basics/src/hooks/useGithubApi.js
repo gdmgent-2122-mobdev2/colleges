@@ -18,7 +18,12 @@ const useGithubApi = (url) => {
         Authorization: createBasicAuth(),
       },
     })
-      .then((data) => data.json())
+      .then((response) => {
+        if (!response.ok) {
+          return Promise.reject(response);
+        }
+        return response.json();
+      })
       .then((data) => isCurrent && setData(data))
       .catch((error) => isCurrent && setError(String(error)));
     return () => (isCurrent = false);

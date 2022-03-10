@@ -1,4 +1,5 @@
 import useGithubApi from "../../../hooks/useGithubApi";
+import Loading from "../../Design/Loading/Loading";
 
 const GithubDetail = ({ username }) => {
   const { isLoading, data, error } = useGithubApi(
@@ -6,7 +7,7 @@ const GithubDetail = ({ username }) => {
   );
 
   if (isLoading) {
-    return <p>Loading</p>;
+    return <Loading />;
   }
 
   if (error) {

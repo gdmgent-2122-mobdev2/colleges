@@ -1,14 +1,13 @@
+import "./StudentDetail.css";
+import Detail from "../../Design/Detail/Detail";
 import GithubDetail from "../GithubDetail/GithubDetail";
 
 const StudentDetail = ({ student, onClose }) => {
   return (
-    <div style={{ width: "50%" }}>
-      <button onClick={onClose}>X</button>
-      <img src={student.image} alt={student.name} />
-      <h1>{student.name}</h1>
-      <p>{student.username}</p>
+    <Detail onClose={onClose}>
+      <h2 className="student-detail__title">{student.name}</h2>
       {student.username && <GithubDetail username={student.username} />}
-    </div>
+    </Detail>
   );
 };
 

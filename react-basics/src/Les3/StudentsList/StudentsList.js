@@ -1,22 +1,10 @@
 import { useEffect, useState } from "react";
+import Container from "../Design/Container/Container";
+import Input from "../Design/Input/Input";
+import List from "../Design/List/List";
+import ListItem from "../Design/List/ListItem";
+import Title from "../Design/Title/Title";
 import StudentDetail from "./StudentDetail/StudentDetail";
-
-const List = ({ children }) => {
-  return (
-    <ul style={{ width: "50%" }} className="students">
-      {children}
-    </ul>
-  );
-};
-
-const ListItem = ({ name, img, onClick }) => {
-  return (
-    <li className="students__item" onClick={onClick}>
-      <img src={img} alt={name} />
-      <h3>{name}</h3>
-    </li>
-  );
-};
 
 const StudentsList = () => {
   const [students, setStudents] = useState();
@@ -70,14 +58,14 @@ const StudentsList = () => {
 
   return (
     <div className="App">
-      <h1>Studenten ({students.length})</h1>
-      <input
+      <Title>Studenten ({students.length})</Title>
+      <Input
         type="search"
         name="search"
         value={search}
         onChange={handleChange}
       />
-      <div style={{ display: "flex" }}>
+      <Container>
         <List>
           {filteredStudents.map((student) => (
             <ListItem
@@ -94,7 +82,7 @@ const StudentsList = () => {
             student={currentStudent}
           />
         )}
-      </div>
+      </Container>
     </div>
   );
 };

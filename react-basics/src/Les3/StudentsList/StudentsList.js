@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Container from "../Design/Container/Container";
-import Input from "../Design/Input/Input";
-import List from "../Design/List/List";
-import ListItem from "../Design/List/ListItem";
-import Title from "../Design/Title/Title";
+import Container from "../../Design/Container/Container";
+import Input from "../../Design/Input/Input";
+import List from "../../Design/List/List";
+import ListItem from "../../Design/List/ListItem";
+import Title from "../../Design/Title/Title";
 import StudentDetail from "./StudentDetail/StudentDetail";
 
 const StudentsList = () => {

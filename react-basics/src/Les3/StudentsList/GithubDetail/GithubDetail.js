@@ -1,5 +1,5 @@
 import useGithubApi from "../../../hooks/useGithubApi";
-import Loading from "../../Design/Loading/Loading";
+import Loading from "../../../Design/Loading/Loading";
 
 const GithubDetail = ({ username }) => {
   const { isLoading, data, error } = useGithubApi(

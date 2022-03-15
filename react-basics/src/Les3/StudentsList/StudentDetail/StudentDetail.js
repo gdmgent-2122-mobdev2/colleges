@@ -1,5 +1,5 @@
 import "./StudentDetail.css";
-import Detail from "../../Design/Detail/Detail";
+import Detail from "../../../Design/Detail/Detail";
 import GithubDetail from "../GithubDetail/GithubDetail";
 
 const StudentDetail = ({ student, onClose }) => {

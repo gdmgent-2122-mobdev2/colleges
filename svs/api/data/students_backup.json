@@ -4,263 +4,230 @@
     "name": "Bauwens Milan",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "milanbauwens",
-    "isPresent": false
+    "username": "milanbauwens"
   },
   {
     "id": 2,
     "name": "Beirnaert Diederik",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "diederikbeirnaert",
-    "isPresent": false
+    "username": "diederikbeirnaert"
   },
   {
     "id": 3,
     "name": "Bien Patricia",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "",
-    "isPresent": false
+    "username": ""
   },
   {
     "id": 4,
     "name": "Bodyn Tiele",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "",
-    "isPresent": false
+    "username": ""
   },
   {
     "id": 5,
     "name": "Cherchié Thibaud",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "",
-    "isPresent": false
+    "username": ""
   },
   {
     "id": 6,
     "name": "Claeys Vincent",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "VincentClaeys",
-    "isPresent": false
+    "username": "VincentClaeys"
   },
   {
     "id": 7,
     "name": "Coppens d'Eeckenbrugge Menno",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "mennocoppensd",
-    "isPresent": false
+    "username": "mennocoppensd"
   },
   {
     "id": 8,
     "name": "De Baere Andries",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "Andries-DB",
-    "isPresent": false
+    "username": "Andries-DB"
   },
   {
     "id": 9,
     "name": "De Boever Lisa",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "",
-    "isPresent": false
+    "username": ""
   },
   {
     "id": 10,
     "name": "De Brauwer Wout",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "Woutdebr",
-    "isPresent": false
+    "username": "Woutdebr"
   },
   {
     "id": 11,
     "name": "De Buck Elooi",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "",
-    "isPresent": false
+    "username": ""
   },
   {
     "id": 12,
     "name": "Deneckere Robin",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "NECKERRMAN",
-    "isPresent": false
+    "username": "NECKERRMAN"
   },
   {
     "id": 13,
     "name": "Duffeleer Niels",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "",
-    "isPresent": false
+    "username": ""
   },
   {
     "id": 14,
     "name": "Dupont Wouter",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "",
-    "isPresent": false
+    "username": ""
   },
   {
     "id": 15,
     "name": "Feraux Thibault",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "thibaultferaux",
-    "isPresent": false
+    "username": "thibaultferaux"
   },
   {
     "id": 16,
     "name": "Kaya Dilara",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "Kayadilara",
-    "isPresent": false
+    "username": "Kayadilara"
   },
   {
     "id": 17,
     "name": "Lannoy Alexander",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "alexlann",
-    "isPresent": false
+    "username": "alexlann"
   },
   {
     "id": 18,
     "name": "Maenhout Iris",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "",
-    "isPresent": false
+    "username": ""
   },
   {
     "id": 19,
     "name": "Minne Niels",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "",
-    "isPresent": false
+    "username": ""
   },
   {
     "id": 20,
     "name": "Pieters Rien",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "RienPieters",
-    "isPresent": false
+    "username": "RienPieters"
   },
   {
     "id": 21,
     "name": "Reinhard Michael",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "michaelreinhard1",
-    "isPresent": false
+    "username": "michaelreinhard1"
   },
   {
     "id": 22,
     "name": "Schulte Naboth",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "NabothS",
-    "isPresent": false
+    "username": "NabothS"
   },
   {
     "id": 23,
     "name": "Sinnaeve Jorne",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "JorneSinnaeve",
-    "isPresent": false
+    "username": "JorneSinnaeve"
   },
   {
     "id": 24,
     "name": "Spaan Ruben",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "RSpaan",
-    "isPresent": false
+    "username": "RSpaan"
   },
   {
     "id": 25,
     "name": "Tack Wouter",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "",
-    "isPresent": false
+    "username": ""
   },
   {
     "id": 26,
     "name": "Van Cuyck Keano",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "keanovc",
-    "isPresent": false
+    "username": "keanovc"
   },
   {
     "id": 27,
     "name": "Van der Donckt Rossi",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "",
-    "isPresent": false
+    "username": ""
   },
   {
     "id": 28,
     "name": "Van Hoorde Bjorn",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "BjornVanHoorde",
-    "isPresent": false
+    "username": "BjornVanHoorde"
   },
   {
     "id": 29,
     "name": "Van Rossem Kyan",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "kyanvr",
-    "isPresent": false
+    "username": "kyanvr"
   },
   {
     "id": 30,
     "name": "Vandamme Dylan",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "",
-    "isPresent": false
+    "username": ""
   },
   {
     "id": 31,
     "name": "Vandenheede Bent",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "bentvandenheede",
-    "isPresent": false
+    "username": "bentvandenheede"
   },
   {
     "id": 32,
     "name": "Verheecke Lorenzo",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "VerheeckeLorenzo",
-    "isPresent": false
+    "username": "VerheeckeLorenzo"
   },
   {
     "id": 33,
     "name": "Verniers Stef",
     "image":
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
-    "username": "",
-    "isPresent": false
+    "username": ""
   }
 ]

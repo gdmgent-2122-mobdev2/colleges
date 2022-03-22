@@ -1,3 +1,4 @@
+import { ObjectID } from "bson";
 import "dotenv/config";
 
 import express from "express";
@@ -61,13 +62,45 @@ app.get("/students/:id", async (req, res) => {
 // PATCH
 app.patch("/students/:id", async (req, res) => {
   const id = req.params.id;
+
+  const student = await db
+    .collection("students")
+    .findOne({ _id: ObjectId(id) });
+
+  if (student) {
+    const { _id, ...data } = req.body;
+    const newData = { ...student, ...data };
+    // or updateOne
+    await db.collection("students").replaceOne({ _id: ObjectId(id) }, newData);
+
+    res.json(newData);
+  } else {
+    res.status(404).json({ error: "Not found" });
+  }
 });
 
 // DELETE
 app.delete("/students/:id", async (req, res) => {
   const id = req.params.id;
+
+  await db.collection("students").deleteOne({
+    _id: ObjectID(id),
+  });
+
+  res.json({});
 });
 
 app.listen(port, () => {
   console.log(`App listening http://localhost:${port}`);
 });
+
+// make sure database is closed when server crashes
+const closeServer = () => {
+  // todo close db
+  db.close();
+  // default
+  process.exit();
+};
+
+process.on("SIGINT", () => closeServer());
+process.on("SIGTERM", () => closeServer());

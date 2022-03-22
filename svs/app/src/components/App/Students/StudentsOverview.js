@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Loading from "../../Design/Loading/Loading";
 import List from "../../Design/List/List";
 import ListItem from "../../Design/List/ListItem";

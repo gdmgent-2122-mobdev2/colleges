@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import useApi from "../../../core/hooks/useApi";
 import Button from "../../Design/Button/Button";

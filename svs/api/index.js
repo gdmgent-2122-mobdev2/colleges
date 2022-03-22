@@ -1,16 +1,22 @@
+import "dotenv/config";
+
 import express from "express";
-import cors from "cors";
-import { readFileSync, writeFileSync } from "fs";
-import bodyParser from "body-parser";
+import { cp, readFileSync, writeFileSync } from "fs";
+import { ObjectId } from "mongodb";
+import { initClient } from "./db/mongo.js";
+import { registerMiddleware } from "./middleware/index.js";
 
 const DATA_PATH = "./data/students.json";
 
 const app = express();
 const port = 3002;
 
-// use CORS middleware
-app.use(cors());
-app.use(bodyParser.json());
+// register middleware
+registerMiddleware(app);
+
+// init MongoDB
+const client = await initClient();
+const db = client.db();
 
 const getStudentsFromFile = () => {
   const data = readFileSync(DATA_PATH, "utf8");
@@ -21,45 +27,45 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.get("/students", (req, res) => {
-  const students = getStudentsFromFile();
+app.get("/students", async (req, res) => {
+  const students = await db.collection("students").find().toArray();
   res.json(students);
 });
 
-app.post("/students", (req, res) => {
-  const students = getStudentsFromFile();
-
-  // map to array of id's + get highest (max)
-  const highestId = Math.max(...students.map((student) => student.id));
-
-  // add student
+app.post("/students", async (req, res) => {
   const student = {
-    id: highestId + 1,
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
     ...req.body,
   };
-  students.push(student);
 
-  // save changes to JSON file
-  writeFileSync(DATA_PATH, JSON.stringify(students));
+  await db.collection("students").insertOne(student);
 
   // return added student
   res.json(student);
 });
 
-app.get("/students/:id", (req, res) => {
-  const students = getStudentsFromFile();
-
-  // get id from url + parseInt because student.id is a number
-  const id = parseInt(req.params.id);
-  const student = students.find((student) => student.id === id);
+app.get("/students/:id", async (req, res) => {
+  const id = req.params.id;
+  const student = await db.collection("students").findOne({
+    _id: ObjectId(id),
+  });
 
   if (student) {
     res.json(student);
   } else {
     res.status(404).json({ error: "Not found" });
   }
+});
+
+// PATCH
+app.patch("/students/:id", async (req, res) => {
+  const id = req.params.id;
+});
+
+// DELETE
+app.delete("/students/:id", async (req, res) => {
+  const id = req.params.id;
 });
 
 app.listen(port, () => {

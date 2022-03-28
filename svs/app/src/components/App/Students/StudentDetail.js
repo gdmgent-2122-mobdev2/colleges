@@ -1,12 +1,12 @@
 import { Link, useParams } from "react-router-dom";
-import useApi from "../../../core/hooks/useApi";
+import useFetch from "../../../core/hooks/useFetch";
 import Button from "../../Design/Button/Button";
 import Loading from "../../Design/Loading/Loading";
 
 const StudentDetail = () => {
   const { id } = useParams();
 
-  const { isLoading, error, data: student } = useApi(`/students/${id}`);
+  const { isLoading, error, data: student } = useFetch(`/students/${id}`);
 
   if (error) {
     return <p>{error}</p>;

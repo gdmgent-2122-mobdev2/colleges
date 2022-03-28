@@ -2,10 +2,10 @@ import Loading from "../../Design/Loading/Loading";
 import List from "../../Design/List/List";
 import ListItem from "../../Design/List/ListItem";
 import Button from "../../Design/Button/Button";
-import useApi from "../../../core/hooks/useApi";
+import useFetch from "../../../core/hooks/useFetch";
 
 const StudentsOverview = () => {
-  const { isLoading, error, data: students } = useApi("/students");
+  const { isLoading, error, data: students } = useFetch("/students");
 
   if (error) {
     return <p>{error}</p>;

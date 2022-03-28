@@ -1,18 +1,14 @@
 import { useEffect, useState } from "react";
+import { handleErrors } from "../helpers/api";
 
-const useApi = (path) => {
+const useFetch = (path) => {
   const [data, setData] = useState();
   const [error, setError] = useState();
 
   useEffect(() => {
     let isCurrent = true;
     fetch(`${process.env.REACT_APP_API_URL}${path}`)
-      .then((response) => {
-        if (!response.ok) {
-          return Promise.reject(response);
-        }
-        return response.json();
-      })
+      .then(handleErrors)
       .then((data) => isCurrent && setData(data))
       .catch((error) => isCurrent && setError(String(error)));
 
@@ -28,4 +24,4 @@ const useApi = (path) => {
   };
 };
 
-export default useApi;
+export default useFetch;

@@ -1,8 +1,6 @@
-import { ObjectID } from "bson";
 import "dotenv/config";
 
 import express from "express";
-import { cp, readFileSync, writeFileSync } from "fs";
 import { ObjectId } from "mongodb";
 import { initClient } from "./db/mongo.js";
 import { registerMiddleware } from "./middleware/index.js";
@@ -18,11 +16,6 @@ registerMiddleware(app);
 // init MongoDB
 const client = await initClient();
 const db = client.db();
-
-const getStudentsFromFile = () => {
-  const data = readFileSync(DATA_PATH, "utf8");
-  return JSON.parse(data);
-};
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
@@ -84,7 +77,7 @@ app.delete("/students/:id", async (req, res) => {
   const id = req.params.id;
 
   await db.collection("students").deleteOne({
-    _id: ObjectID(id),
+    _id: ObjectId(id),
   });
 
   res.json({});

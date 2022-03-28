@@ -26,7 +26,9 @@ const StudentDetail = () => {
       </div>
       <div>
         <img src={student.image} alt={student.name} />
-        <h1>{student.name}</h1>
+        <h1>
+          {student.name} {student.surname}
+        </h1>
         <p>{student.username}</p>
       </div>
     </div>

@@ -18,6 +18,12 @@
   background: rgb(139, 43, 43);
 }
 
+.btn--alert {
+  border-radius: 0.5rem;
+  background: #ffe6e6;
+  color: #450707;
+}
+
 .btn--primary:hover {
   background: rgb(4, 5, 43);
 }

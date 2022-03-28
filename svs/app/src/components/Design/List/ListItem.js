@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 
-const ListItem = ({ name, img, onClick, href }) => {
+const ListItem = ({ name, img, onClick, href, children }) => {
   if (href) {
     return (
-      <Link to={href} className="list-item" onClick={onClick}>
-        <img className="list-item__image" src={img} alt={name} />
-        <h3 className="list-item__title">{name}</h3>
-      </Link>
+      <div className="list-item">
+        <Link to={href}>
+          <img className="list-item__image" src={img} alt={name} />
+          <h3 className="list-item__title">{name}</h3>
+        </Link>
+        {children}
+      </div>
     );
   }
 
@@ -14,6 +17,7 @@ const ListItem = ({ name, img, onClick, href }) => {
     <li className="list-item" onClick={onClick}>
       <img className="list-item__image" src={img} alt={name} />
       <h3 className="list-item__title">{name}</h3>
+      {children}
     </li>
   );
 };

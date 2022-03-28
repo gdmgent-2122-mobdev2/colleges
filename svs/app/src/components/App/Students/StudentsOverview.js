@@ -25,10 +25,10 @@ const StudentsOverview = () => {
       <List>
         {students.map((student) => (
           <ListItem
-            href={`/students/${student.id}`}
-            key={student.id}
+            href={`/students/${student._id}`}
+            key={student._id}
             img={student.image}
-            name={student.name}
+            name={`${student.name} ${student.surname}`}
           />
         ))}
       </List>

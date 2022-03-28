@@ -36,7 +36,7 @@ const Button = ({
 };
 
 Button.propTypes = {
-  color: PropTypes.oneOf(["primary", "secondary"]),
+  color: PropTypes.oneOf(["primary", "secondary", "alert"]),
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
   href: PropTypes.string,

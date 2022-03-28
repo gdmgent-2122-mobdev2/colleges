@@ -13,9 +13,17 @@
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 0.5rem;
-  cursor: pointer;
   text-decoration: none;
   transition: color 0.2s ease-in;
+}
+
+.list-item a {
+  display: flex;
+  flex-grow: 1;
+}
+
+.list-item button {
+  margin-left: auto;
 }
 
 .list-item:hover {

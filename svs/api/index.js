@@ -89,8 +89,6 @@ app.listen(port, () => {
 
 // make sure database is closed when server crashes
 const closeServer = () => {
-  // todo close db
-  db.close();
   // default
   process.exit();
 };

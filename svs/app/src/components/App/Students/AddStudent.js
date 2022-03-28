@@ -10,7 +10,7 @@ const AddStudent = () => {
   const [error, setError] = useState();
   const [data, setData] = useState({
     name: "",
-    username: "",
+    surname: "",
   });
 
   const handleChange = (e) => {
@@ -55,8 +55,8 @@ const AddStudent = () => {
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>
         <Input name="name" value={data.name} onChange={handleChange} />
-        <label htmlFor="username">Username</label>
-        <Input name="username" value={data.username} onChange={handleChange} />
+        <label htmlFor="surname">Surname</label>
+        <Input name="surname" value={data.surname} onChange={handleChange} />
         <Button type="submit" disabled={loading}>
           Create
         </Button>

@@ -1,0 +1,23 @@
+.header {
+  width: 100%;
+  padding: 1rem 0;
+  background: #000;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.header a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.header__title {
+  margin: 0;
+}
+
+.header .container {
+  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

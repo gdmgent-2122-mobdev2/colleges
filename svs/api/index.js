@@ -5,8 +5,6 @@ import { ObjectId } from "mongodb";
 import { initClient } from "./db/mongo.js";
 import { registerMiddleware } from "./middleware/index.js";
 
-const DATA_PATH = "./data/students.json";
-
 const app = express();
 const port = 3002;
 
@@ -17,16 +15,28 @@ registerMiddleware(app);
 const client = await initClient();
 const db = client.db();
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+app.post("/login", async (req, res) => {
+  const username = req.body.username;
+
+  let user = await db.collection("users").findOne({ username });
+
+  if (!user) {
+    await db.collection("users").insertOne({ username });
+    user = await db.collection("users").findOne({ username });
+  }
+
+  res.json(user);
 });
 
-app.get("/students", async (req, res) => {
+const authRouter = express.Router();
+
+authRouter.get("/students", async (req, res) => {
+  console.log(req.user);
   const students = await db.collection("students").find().toArray();
   res.json(students);
 });
 
-app.post("/students", async (req, res) => {
+authRouter.post("/students", async (req, res) => {
   const student = {
     image:
       "https://arteveldehogeschool.instructure.com/images/messages/avatar-50.png",
@@ -39,7 +49,7 @@ app.post("/students", async (req, res) => {
   res.json(student);
 });
 
-app.get("/students/:id", async (req, res) => {
+authRouter.get("/students/:id", async (req, res) => {
   const id = req.params.id;
   const student = await db.collection("students").findOne({
     _id: ObjectId(id),
@@ -53,7 +63,7 @@ app.get("/students/:id", async (req, res) => {
 });
 
 // PATCH
-app.patch("/students/:id", async (req, res) => {
+authRouter.patch("/students/:id", async (req, res) => {
   const id = req.params.id;
 
   const student = await db
@@ -73,7 +83,7 @@ app.patch("/students/:id", async (req, res) => {
 });
 
 // DELETE
-app.delete("/students/:id", async (req, res) => {
+authRouter.delete("/students/:id", async (req, res) => {
   const id = req.params.id;
 
   await db.collection("students").deleteOne({
@@ -82,6 +92,23 @@ app.delete("/students/:id", async (req, res) => {
 
   res.json({});
 });
+
+app.use(async (req, res, next) => {
+  if (req.headers.authorization) {
+    // check if user with id exists
+    const user = await db
+      .collection("users")
+      .findOne({ _id: ObjectId(req.headers.authorization) });
+    // exists? pass user to request
+    if (user) {
+      req.user = user;
+      return next();
+    }
+  }
+  res.status(401).json({
+    error: "Unauthorized",
+  });
+}, authRouter);
 
 app.listen(port, () => {
   console.log(`App listening http://localhost:${port}`);

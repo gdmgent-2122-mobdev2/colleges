@@ -7,17 +7,19 @@ const useFetch = (path) => {
   const [error, setError] = useState();
   const { user } = useAuthContext();
 
+  const userId = user._id;
+
   const fetchData = useCallback(() => {
     let isCurrent = true;
     fetch(`${process.env.REACT_APP_API_URL}${path}`, {
-      headers: { Authorization: user._id },
+      headers: { Authorization: userId },
     })
       .then(handleErrors)
       .then((data) => isCurrent && setData(data))
       .catch((error) => isCurrent && setError(String(error)));
 
     return () => (isCurrent = false);
-  }, [path]);
+  }, [path, userId]);
 
   useEffect(() => {
     return fetchData();

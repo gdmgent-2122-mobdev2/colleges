@@ -1,9 +1,9 @@
-import 'dotenv/config';
+import "dotenv/config";
 
 import * as express from "express";
-import { AppDataSource } from './database/DataSource';
-import { registerMiddleware } from './middleware';
-import { registerRoutes } from './routes';
+import { AppDataSource } from "./database/DataSource";
+import { registerMiddleware } from "./middleware";
+import { registerRoutes } from "./routes";
 
 AppDataSource.initialize()
     .then(async () => {
@@ -18,11 +18,13 @@ AppDataSource.initialize()
         // start express server
         app.listen(process.env.PORT || 3001);
 
-        if (process.env.ENV === 'development') {
-            console.log(`App has started on http://localhost:${process.env.PORT}`);
+        if (process.env.ENV === "development") {
+            console.log(
+                `App has started on http://localhost:${process.env.PORT}`
+            );
         }
-
-    }).catch((error) => {
+    })
+    .catch((error) => {
         console.log(error);
     });
 
@@ -33,5 +35,5 @@ const closeApp = () => {
     process.exit();
 };
 
-process.on('SIGINT', () => closeApp());
-process.on('SIGTERM', () => closeApp());
+process.on("SIGINT", () => closeApp());
+process.on("SIGTERM", () => closeApp());

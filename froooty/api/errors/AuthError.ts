@@ -1,7 +1,7 @@
 import BaseError from "./BaseError";
 
 export default class AuthError extends BaseError {
-  constructor() {
-    super("Unauthorized", 401);
-  }
+    constructor() {
+        super("Unauthorized", 401);
+    }
 }

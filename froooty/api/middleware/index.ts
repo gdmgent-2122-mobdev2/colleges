@@ -2,32 +2,33 @@ import { Express } from "express";
 import * as cors from "cors";
 import * as bodyParser from "body-parser";
 import * as helmet from "helmet";
+import { Router } from "express";
 
-const registerMiddleware = (app: Express.Application) => {
-  // use CORS middleware
-  // add "allow all" cors
-  if (process.env.ENV === "production") {
-    // in production we only allow the specific domain
-    const corsOptions = {
-      origin: process.env.APP_URL,
-      optionsSuccessStatus: 200,
-    };
-    app.use(cors(corsOptions));
-  } else {
-    app.use(cors());
-  }
+const registerMiddleware = (app: Router) => {
+    // use CORS middleware
+    // add "allow all" cors
+    if (process.env.ENV === "production") {
+        // in production we only allow the specific domain
+        const corsOptions = {
+            origin: process.env.APP_URL,
+            optionsSuccessStatus: 200,
+        };
+        app.use(cors(corsOptions));
+    } else {
+        app.use(cors());
+    }
 
-  app.use(bodyParser.json());
-  app.use(
-    bodyParser.urlencoded({
-      extended: true,
-    })
-  );
+    app.use(bodyParser.json());
+    app.use(
+        bodyParser.urlencoded({
+            extended: true,
+        })
+    );
 
-  // helmet security
-  app.use(helmet.noSniff());
-  app.use(helmet.hidePoweredBy());
-  app.use(helmet.xssFilter());
+    // helmet security
+    app.use(helmet.noSniff());
+    app.use(helmet.hidePoweredBy());
+    app.use(helmet.xssFilter());
 };
 
 export { registerMiddleware };

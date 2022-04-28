@@ -1,8 +1,14 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+    Column,
+    Entity,
+    PrimaryGeneratedColumn,
+    CreateDateColumn,
+    UpdateDateColumn,
+    DeleteDateColumn,
+} from "typeorm";
 
 @Entity()
 export default class Client {
-
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -15,4 +21,12 @@ export default class Client {
     @Column()
     contactName: string;
 
+    @CreateDateColumn({ select: false })
+    createdAt: Date;
+
+    @UpdateDateColumn({ select: false })
+    updatedAt: Date;
+
+    @DeleteDateColumn({ select: false })
+    deletedAt: Date;
 }

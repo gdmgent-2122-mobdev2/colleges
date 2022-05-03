@@ -1,4 +1,3 @@
-import { Express } from "express";
 import * as cors from "cors";
 import * as bodyParser from "body-parser";
 import * as helmet from "helmet";

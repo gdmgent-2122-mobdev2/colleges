@@ -1,5 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { BaseEntity } from "../BaseEntity";
+import Project from "../Project/Project.entity";
 
 @Entity()
 export default class Client extends BaseEntity {
@@ -14,4 +15,7 @@ export default class Client extends BaseEntity {
 
     @Column()
     contactName: string;
+
+    @OneToMany(() => Project, (project) => project.client)
+    projects: Project[];
 }

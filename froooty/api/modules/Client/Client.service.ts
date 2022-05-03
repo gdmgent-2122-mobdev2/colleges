@@ -12,7 +12,6 @@ export default class ClientService {
     }
 
     all = async () => {
-        // don't show password
         const clients = await this.repository.find();
         return clients;
     };

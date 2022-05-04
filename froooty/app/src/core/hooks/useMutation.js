@@ -29,7 +29,7 @@ const useMutation = () => {
             }
         } catch (error) {
             if (options.onError) {
-                options.onError(error);
+                options.onError(String(error));
             } else {
                 setIsLoading(false);
                 setError(String(error));

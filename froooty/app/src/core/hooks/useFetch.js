@@ -10,7 +10,7 @@ const useFetch = (path) => {
         let isCurrent = true;
         authFetch(`${process.env.REACT_APP_API_URL}${path}`)
             .then((data) => isCurrent && setData(data))
-            .catch((error) => isCurrent && setError(error));
+            .catch((error) => isCurrent && setError(String(error)));
 
         return () => (isCurrent = false);
     }, [path, authFetch]);

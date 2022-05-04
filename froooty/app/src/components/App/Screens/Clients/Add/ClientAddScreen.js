@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import useMutation from "../../../../../core/hooks/useMutation";
 import { ClientRoutes } from "../../../../../core/routing";
 import Alert from "../../../../Design/Alert";
-import ClientForm from "../Form/ClientForm";
+import ClientForm from "../../../Shared/Clients/Form/ClientForm";
 
 const ClientAddScreen = () => {
     const navigate = useNavigate();

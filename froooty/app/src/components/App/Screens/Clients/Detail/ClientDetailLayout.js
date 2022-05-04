@@ -1,7 +1,7 @@
 import { Outlet, useParams } from "react-router-dom";
 import useFetch from "../../../../../core/hooks/useFetch";
 import Alert from "../../../../Design/Alert";
-import LoadingIndicator from "../../../../Shared/LoadingIndicator/LoadingIndicator";
+import LoadingIndicator from "../../../Shared/LoadingIndicator/LoadingIndicator";
 
 const ClientDetailLayout = () => {
     const { id } = useParams();

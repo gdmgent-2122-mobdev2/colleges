@@ -10,6 +10,7 @@ import ClientDetailScreen from "./Screens/Clients/Detail/ClientDetailScreen";
 import ClientEditScreen from "./Screens/Clients/Edit/ClientEditScreen";
 import ClientsOverviewScreen from "./Screens/Clients/Overview/ClientsOverviewScreen";
 import ClientAddScreen from "./Screens/Clients/Add/ClientAddScreen";
+import AuthContainer from "./Auth/AuthContainer";
 
 const App = () => {
     return (
@@ -22,7 +23,12 @@ const App = () => {
                         element={<Navigate to={AuthRoutes.Login} />}
                     />
                 </Route>
-                <Route element={<AppLayout />}>
+                <Route
+                    element={
+                        <AuthContainer>
+                            <AppLayout />
+                        </AuthContainer>
+                    }>
                     <Route
                         path={ClientRoutes.Index}
                         element={<ClientsLayout />}>

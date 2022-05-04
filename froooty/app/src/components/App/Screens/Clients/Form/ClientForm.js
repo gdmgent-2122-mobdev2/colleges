@@ -29,12 +29,18 @@ const ClientForm = ({ initialData = {}, isDisabled, onSubmit, label }) => {
         <form onSubmit={handleSubmit}>
             <FormGroup>
                 <Label htmlFor="name">Name</Label>
-                <Input name="name" value={data.name} onChange={handleChange} />
+                <Input
+                    name="name"
+                    disabled={isDisabled}
+                    value={data.name}
+                    onChange={handleChange}
+                />
             </FormGroup>
             <FormGroup>
                 <Label htmlFor="contactName">Contact Person Name</Label>
                 <Input
                     name="contactName"
+                    disabled={isDisabled}
                     value={data.contactName}
                     onChange={handleChange}
                 />
@@ -43,6 +49,7 @@ const ClientForm = ({ initialData = {}, isDisabled, onSubmit, label }) => {
                 <Label htmlFor="contactEmail">Contact Person Email</Label>
                 <Input
                     name="contactEmail"
+                    disabled={isDisabled}
                     value={data.contactEmail}
                     onChange={handleChange}
                 />

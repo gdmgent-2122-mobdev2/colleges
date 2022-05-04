@@ -2,7 +2,7 @@ import "dotenv/config";
 
 import * as express from "express";
 import { AppDataSource } from "./database/DataSource";
-import { registerMiddleware } from "./middleware";
+import { registerErrorHandler, registerMiddleware } from "./middleware";
 import { registerRoutes } from "./routes";
 
 AppDataSource.initialize()
@@ -14,6 +14,9 @@ AppDataSource.initialize()
 
         // routes
         registerRoutes(app);
+
+        // error handler
+        registerErrorHandler(app);
 
         // start express server
         app.listen(process.env.PORT || 3001);

@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response, Router } from "express";
-import BaseError from "../errors/BaseError";
 import NotFoundError from "../errors/NotFoundError";
 import { authJwt, authLocal } from "../middleware/auth";
 import ClientController from "../modules/Client/Client.controller";
@@ -49,17 +48,6 @@ const registerRoutes = (app: Router) => {
     // fallback route, return our own 404 instead of default
     app.use((req: Request, res: Response, next: NextFunction) => {
         next(new NotFoundError());
-    });
-
-    // default error handler
-    app.use(function (
-        err: BaseError,
-        req: Request,
-        res: Response,
-        next: NextFunction
-    ) {
-        res.status(err.statusCode || 500);
-        res.json(err);
     });
 };
 

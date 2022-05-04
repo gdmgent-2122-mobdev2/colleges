@@ -1,7 +1,8 @@
 import * as cors from "cors";
 import * as bodyParser from "body-parser";
 import * as helmet from "helmet";
-import { Router } from "express";
+import { NextFunction, Request, Response, Router } from "express";
+import BaseError from "../errors/BaseError";
 
 const registerMiddleware = (app: Router) => {
     // use CORS middleware
@@ -30,4 +31,17 @@ const registerMiddleware = (app: Router) => {
     app.use(helmet.xssFilter());
 };
 
-export { registerMiddleware };
+const registerErrorHandler = (app: Router) => {
+    // default error handler
+    app.use(function (
+        err: BaseError,
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ) {
+        res.status(err.statusCode || 500);
+        res.json(err);
+    });
+};
+
+export { registerMiddleware, registerErrorHandler };

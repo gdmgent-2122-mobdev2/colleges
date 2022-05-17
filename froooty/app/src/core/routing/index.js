@@ -10,6 +10,20 @@ const ClientRoutes = {
     Edit: "/clients/:id/edit",
 };
 
+const ProjectRoutes = {
+    Index: "/projects",
+    New: "/projects/new",
+    Detail: "/projects/:id",
+    Edit: "/projects/:id/edit",
+};
+
+const UserRoutes = {
+    Index: "/users",
+    New: "/users/new",
+    Detail: "/users/:id",
+    Edit: "/users/:id/edit",
+};
+
 // replaces : values with values from object
 // e.g. route('/projects/:id', { id : 9 }) -> /projects/9
 export const route = (path, options = {}) => {
@@ -19,4 +33,4 @@ export const route = (path, options = {}) => {
     return path;
 };
 
-export { AuthRoutes, ClientRoutes };
+export { AuthRoutes, ClientRoutes, ProjectRoutes, UserRoutes };

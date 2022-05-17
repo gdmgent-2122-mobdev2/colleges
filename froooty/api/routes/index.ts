@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response, Router } from "express";
 import NotFoundError from "../errors/NotFoundError";
-import { authJwt, authLocal } from "../middleware/auth";
+import { authJwt, authLocal, withRole } from "../middleware/auth";
 import ClientController from "../modules/Client/Client.controller";
 import ProjectController from "../modules/Project/Project.controller";
 import AuthController from "../modules/User/Auth.controller";
+import { UserRole } from "../modules/User/User.constants";
 import UserController from "../modules/User/User.controller";
 
 const registerOnboardingRoutes = (router: Router) => {
@@ -15,6 +16,19 @@ const registerOnboardingRoutes = (router: Router) => {
     if (process.env.ENV === "development") {
         router.post("/dev/users", userController.create);
     }
+};
+
+const registerAdminRoutes = (router: Router) => {
+    const adminRouter = Router();
+
+    const userController = new UserController();
+    adminRouter.get("/users", userController.all);
+    adminRouter.get("/users/:id", userController.find);
+    adminRouter.post("/users", userController.create);
+    adminRouter.patch("/users/:id", userController.update);
+    adminRouter.delete("/users/:id", userController.delete);
+
+    router.use(withRole(UserRole.Admin), adminRouter);
 };
 
 const registerAuthenticatedRoutes = (router: Router) => {
@@ -32,7 +46,9 @@ const registerAuthenticatedRoutes = (router: Router) => {
     authRouter.get("/projects/:id", projectController.find);
     authRouter.post("/projects", projectController.create);
     authRouter.patch("/projects/:id", projectController.update);
-    authRouter.delete("/projects/:id", clientController.delete);
+    authRouter.delete("/projects/:id", projectController.delete);
+
+    registerAdminRoutes(authRouter);
 
     // authenticated routes use authJWT
     router.use(authJwt, authRouter);

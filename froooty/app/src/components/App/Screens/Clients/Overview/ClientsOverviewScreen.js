@@ -1,5 +1,5 @@
 import useFetch from "../../../../../core/hooks/useFetch";
-import LoadingIndicator from "../../../Shared/LoadingIndicator/LoadingIndicator";
+import LoadingIndicator from "../../../Shared/Generic/LoadingIndicator/LoadingIndicator";
 import Alert from "../../../../Design/Alert";
 import { Link } from "react-router-dom";
 import { route, ClientRoutes } from "../../../../../core/routing";

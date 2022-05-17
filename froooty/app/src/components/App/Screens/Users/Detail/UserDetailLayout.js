@@ -1,21 +1,18 @@
 import { Outlet, useParams } from "react-router-dom";
 import useFetch from "../../../../../core/hooks/useFetch";
-import useTitle from "../../../../../core/hooks/useTitle";
 import Alert from "../../../../Design/Alert";
 import LoadingIndicator from "../../../Shared/Generic/LoadingIndicator/LoadingIndicator";
 
-const ClientDetailLayout = () => {
+const UserDetailLayout = () => {
     const { id } = useParams();
 
     const {
         isLoading,
         error,
         invalidate,
-        data: client,
+        data: user,
         // refresh,
-    } = useFetch(`/clients/${id}`);
-
-    useTitle(client ? client.name : "");
+    } = useFetch(`/users/${id}`);
 
     const handleUpdate = () => {
         invalidate();
@@ -29,7 +26,7 @@ const ClientDetailLayout = () => {
         return <LoadingIndicator />;
     }
 
-    return <Outlet context={{ client, onClientUpdate: handleUpdate }} />;
+    return <Outlet context={{ user, onUserUpdate: handleUpdate }} />;
 };
 
-export default ClientDetailLayout;
+export default UserDetailLayout;

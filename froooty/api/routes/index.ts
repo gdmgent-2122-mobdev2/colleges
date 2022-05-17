@@ -7,14 +7,25 @@ import AuthController from "../modules/User/Auth.controller";
 import { UserRole } from "../modules/User/User.constants";
 import UserController from "../modules/User/User.controller";
 
+// catch error since Express doesn't catch errors in async functions
+const handleErrors =
+    (func: (req: any, res: Response, next: NextFunction) => Promise<any>) =>
+    async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            await func(req, res, next);
+        } catch (err) {
+            next(err);
+        }
+    };
+
 const registerOnboardingRoutes = (router: Router) => {
     const authController = new AuthController();
-    router.post("/login", authLocal, authController.login);
+    router.post("/login", authLocal, handleErrors(authController.login));
 
     // test route REMOVE after
     const userController = new UserController();
     if (process.env.ENV === "development") {
-        router.post("/dev/users", userController.create);
+        router.post("/dev/users", handleErrors(userController.create));
     }
 };
 
@@ -22,11 +33,11 @@ const registerAdminRoutes = (router: Router) => {
     const adminRouter = Router();
 
     const userController = new UserController();
-    adminRouter.get("/users", userController.all);
-    adminRouter.get("/users/:id", userController.find);
-    adminRouter.post("/users", userController.create);
-    adminRouter.patch("/users/:id", userController.update);
-    adminRouter.delete("/users/:id", userController.delete);
+    adminRouter.get("/users", handleErrors(userController.all));
+    adminRouter.get("/users/:id", handleErrors(userController.find));
+    adminRouter.post("/users", handleErrors(userController.create));
+    adminRouter.patch("/users/:id", handleErrors(userController.update));
+    adminRouter.delete("/users/:id", handleErrors(userController.delete));
 
     router.use(withRole(UserRole.Admin), adminRouter);
 };
@@ -35,18 +46,18 @@ const registerAuthenticatedRoutes = (router: Router) => {
     const authRouter = Router();
 
     const clientController = new ClientController();
-    authRouter.get("/clients", clientController.all);
-    authRouter.get("/clients/:id", clientController.find);
-    authRouter.post("/clients", clientController.create);
-    authRouter.patch("/clients/:id", clientController.update);
-    authRouter.delete("/clients/:id", clientController.delete);
+    authRouter.get("/clients", handleErrors(clientController.all));
+    authRouter.get("/clients/:id", handleErrors(clientController.find));
+    authRouter.post("/clients", handleErrors(clientController.create));
+    authRouter.patch("/clients/:id", handleErrors(clientController.update));
+    authRouter.delete("/clients/:id", handleErrors(clientController.delete));
 
     const projectController = new ProjectController();
-    authRouter.get("/projects", projectController.all);
-    authRouter.get("/projects/:id", projectController.find);
-    authRouter.post("/projects", projectController.create);
-    authRouter.patch("/projects/:id", projectController.update);
-    authRouter.delete("/projects/:id", projectController.delete);
+    authRouter.get("/projects", handleErrors(projectController.all));
+    authRouter.get("/projects/:id", handleErrors(projectController.find));
+    authRouter.post("/projects", handleErrors(projectController.create));
+    authRouter.patch("/projects/:id", handleErrors(projectController.update));
+    authRouter.delete("/projects/:id", handleErrors(projectController.delete));
 
     registerAdminRoutes(authRouter);
 

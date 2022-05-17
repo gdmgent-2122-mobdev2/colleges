@@ -2,21 +2,27 @@ import { compare, hash } from "bcrypt";
 import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { BaseEntity } from "../BaseEntity";
 import { UserRole } from "./User.constants";
+import { IsDefined, IsEmail } from "class-validator";
 
 @Entity()
 export default class User extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @IsDefined()
     @Column()
     name: string;
 
+    @IsDefined()
     @Column()
     surname: string;
 
+    @IsDefined()
+    @IsEmail()
     @Column({ unique: true })
     email: string;
 
+    @IsDefined()
     @Column({ select: false })
     password: string;
 

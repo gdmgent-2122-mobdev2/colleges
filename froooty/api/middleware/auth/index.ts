@@ -7,7 +7,6 @@ import User from "../../modules/User/User.entity";
 import { UserRole } from "../../modules/User/User.constants";
 import { NextFunction, Response } from "express";
 import JwtStrategy from "./JwtStrategy";
-import { AuthRequest } from "./auth.types";
 
 passport.use("local", LocalStrategy);
 passport.use("jwt", JwtStrategy);

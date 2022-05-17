@@ -1,5 +1,7 @@
+import { useTranslation } from "react-i18next";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import useMutation from "../../../../../core/hooks/useMutation";
+import useTitle from "../../../../../core/hooks/useTitle";
 import { ClientRoutes, route } from "../../../../../core/routing";
 import Alert from "../../../../Design/Alert";
 import ClientForm from "../../../Shared/Clients/Form/ClientForm";
@@ -7,6 +9,8 @@ import ClientForm from "../../../Shared/Clients/Form/ClientForm";
 const ClientEditScreen = () => {
     const { client, onClientUpdate } = useOutletContext();
     const navigate = useNavigate();
+    const { t } = useTranslation();
+    useTitle(t("clients.edit.title"));
 
     const { isLoading, error, mutate } = useMutation();
 
@@ -23,7 +27,7 @@ const ClientEditScreen = () => {
 
     return (
         <>
-            <h1>Add client</h1>
+            <h1>{t("clients.edit.title")}</h1>
             {error && <Alert color="danger">{error}</Alert>}
             <ClientForm
                 label="Save"

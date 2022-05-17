@@ -1,0 +1,68 @@
+{
+    "onboarding": {
+        "login": {
+            "title": "Login",
+            "button": "Login"
+        }
+    },
+    "navigation": {
+        "clients": "Clients",
+        "projects": "Projects",
+        "users": "Users"
+    },
+    "clients": {
+        "title": "Clients",
+        "overview": {
+            "title": "Clients",
+            "create": "Create client"
+        },
+        "create": {
+            "title": "Create client"
+        },
+        "edit": {
+            "title": "Edit client"
+        },
+        "fields": {
+            "contact": "Contact person"
+        }
+    },
+    "projects": {
+        "title": "Projects",
+        "overview": {
+            "title": "Projects",
+            "create": "Create project"
+        },
+        "create": {
+            "title": "Create project"
+        },
+        "edit": {
+            "title": "Edit project"
+        }
+    },
+    "users": {
+        "title": "Users",
+        "overview": {
+            "title": "Users",
+            "create": "Create user"
+        },
+        "create": {
+            "title": "Create user"
+        },
+        "edit": {
+            "title": "Edit user"
+        }
+    },
+    "buttons": {
+        "create": "Create",
+        "edit": "Edit",
+        "save": "Save"
+    },
+    "fields": {
+        "id": "Id",
+        "email": "Email",
+        "name": "Name",
+        "password": "Password",
+        "client": "Client",
+        "role": "Role"
+    }
+}

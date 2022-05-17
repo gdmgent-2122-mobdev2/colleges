@@ -6,8 +6,13 @@ import { route, ClientRoutes } from "../../../../../core/routing";
 import Table from "../../../../Design/Table/Table";
 import TableRow from "../../../../Design/Table/TableRow";
 import TableHeader from "../../../../Design/Table/TableHeader";
+import useTitle from "../../../../../core/hooks/useTitle";
+import { useTranslation } from "react-i18next";
 
 const ClientsOverviewScreen = () => {
+    const { t } = useTranslation();
+    useTitle(t("clients.overview.title"));
+
     const { isLoading, data: clients, error } = useFetch("/clients");
 
     if (isLoading) {
@@ -19,13 +24,14 @@ const ClientsOverviewScreen = () => {
 
     return (
         <>
-            <Link to={ClientRoutes.New}>Add client</Link>
+            <h1>{t("clients.overview.title")}</h1>
+            <Link to={ClientRoutes.New}>{t("clients.overview.create")}</Link>
             <Table
                 header={
                     <TableHeader>
-                        <th>Id</th>
-                        <th>name</th>
-                        <th>contact</th>
+                        <th>{t("fields.id")}</th>
+                        <th>{t("fields.name")}</th>
+                        <th>{t("clients.fields.contact")}</th>
                     </TableHeader>
                 }>
                 {clients.map((client) => (

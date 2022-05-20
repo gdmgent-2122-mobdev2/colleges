@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import Button from "../Buttons/Button";
 
 const NavBar = ({ navItems = [], onLogout }) => {
     return (
@@ -23,7 +24,9 @@ const NavBar = ({ navItems = [], onLogout }) => {
                         ))}
                     </ul>
                 </div>
-                <button onClick={onLogout}>Logout</button>
+                <Button color="secondary" onClick={onLogout}>
+                    Logout
+                </Button>
             </div>
         </nav>
     );
@@ -33,8 +36,7 @@ NavBar.propTypes = {
     onLogout: PropTypes.func.isRequired,
     navItems: PropTypes.arrayOf(
         PropTypes.shape({
-            href: PropTypes.string,
-            isActive: PropTypes.bool,
+            to: PropTypes.string,
             label: PropTypes.string,
         })
     ).isRequired,

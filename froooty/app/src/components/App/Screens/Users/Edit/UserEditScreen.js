@@ -1,14 +1,20 @@
 import { useTranslation } from "react-i18next";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import useMutation from "../../../../../core/hooks/useMutation";
+import useTitle from "../../../../../core/hooks/useTitle";
 import { UserRoutes, route } from "../../../../../core/routing";
 import Alert from "../../../../Design/Alert";
+import BackButton from "../../../../Design/Buttons/BackButton";
+import PageHeader from "../../../../Design/PageHeader";
+import Title from "../../../../Design/Typography/Title";
 import UserForm from "../../../Shared/Users/Form/UserForm";
 
 const UserEditScreen = () => {
     const { t } = useTranslation();
     const { user, onUserUpdate } = useOutletContext();
     const navigate = useNavigate();
+
+    useTitle(t("users.edit.title"));
 
     const { isLoading, error, mutate } = useMutation();
 
@@ -25,11 +31,14 @@ const UserEditScreen = () => {
 
     return (
         <>
-            <h1>{t("users.edit.title")}</h1>
+            <BackButton href={route(UserRoutes.Detail, { id: user.id })} />
+            <PageHeader>
+                <Title>{t("users.edit.title")}</Title>
+            </PageHeader>
             {error && <Alert color="danger">{error}</Alert>}
             <UserForm
                 label={t("buttons.save")}
-                isDisabled={isLoading}
+                disabled={isLoading}
                 onSubmit={handleSubmit}
                 initialData={user}
             />

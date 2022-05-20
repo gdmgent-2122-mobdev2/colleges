@@ -8,7 +8,8 @@
     "navigation": {
         "clients": "Clients",
         "projects": "Projects",
-        "users": "Users"
+        "users": "Users",
+        "logs": "Logs"
     },
     "clients": {
         "title": "Clients",
@@ -39,6 +40,20 @@
             "title": "Edit project"
         }
     },
+    "logs": {
+        "title": "Logs",
+        "overview": {
+            "title": "Logs",
+            "create": "Create log",
+            "edit": "Edit log"
+        },
+        "create": {
+            "title": "Create log"
+        },
+        "edit": {
+            "title": "Edit log"
+        }
+    },
     "users": {
         "title": "Users",
         "overview": {
@@ -49,7 +64,8 @@
             "title": "Create user"
         },
         "edit": {
-            "title": "Edit user"
+            "title": "Edit user",
+            "password_print": "Leave blank if you don't want to change the password"
         }
     },
     "buttons": {
@@ -61,8 +77,14 @@
         "id": "Id",
         "email": "Email",
         "name": "Name",
+        "surname": "Surname",
         "password": "Password",
         "client": "Client",
-        "role": "Role"
+        "project": "Project",
+        "user": "User",
+        "role": "Role",
+        "description": "Description",
+        "date": "Date",
+        "time": "Time"
     }
 }

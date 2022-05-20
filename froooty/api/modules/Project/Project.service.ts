@@ -1,7 +1,6 @@
 import { AppDataSource } from "../../database/DataSource";
 import { Repository } from "typeorm";
 import Project from "./Project.entity";
-import Client from "../Client/Client.entity";
 import { ProjectBody } from "./Project.types";
 
 export default class ProjectService {
@@ -14,6 +13,9 @@ export default class ProjectService {
     all = async () => {
         const projects = await this.projectRepository.find({
             relations: ["client"],
+            order: {
+                name: "ASC",
+            },
         });
         return projects;
     };

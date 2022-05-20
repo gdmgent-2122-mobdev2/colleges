@@ -6,15 +6,31 @@ import {
     ProjectRoutes,
     ClientRoutes,
 } from "../../../../../core/routing";
+import LoadingIndicator from "../../../Shared/Generic/LoadingIndicator/LoadingIndicator";
 import { useTranslation } from "react-i18next";
 import Table from "../../../../Design/Table/Table";
 import TableHeader from "../../../../Design/Table/TableHeader";
 import TableRow from "../../../../Design/Table/TableRow";
-import LoadingIndicator from "../../../Shared/Generic/LoadingIndicator/LoadingIndicator";
+import DeleteButton from "../../../Shared/Buttons/DeleteButton";
+import Button from "../../../../Design/Buttons/Button";
+import PageHeader from "../../../../Design/PageHeader";
+import Title from "../../../../Design/Typography/Title";
+import useTitle from "../../../../../core/hooks/useTitle";
 
 const ProjectsOverviewScreen = () => {
     const { t } = useTranslation();
-    const { isLoading, data: projects, error } = useFetch("/projects");
+    const {
+        isLoading,
+        data: projects,
+        error,
+        invalidate,
+    } = useFetch("/projects");
+
+    useTitle(t("projects.title"));
+
+    const handleProjectDelete = () => {
+        invalidate();
+    };
 
     if (isLoading) {
         return <LoadingIndicator />;
@@ -25,19 +41,22 @@ const ProjectsOverviewScreen = () => {
 
     return (
         <>
-            <h1>{t("projects.overview.title")}</h1>
-            <Link to={ProjectRoutes.New}>{t("projects.overview.create")}</Link>
+            <PageHeader>
+                <Title>{t("projects.overview.title")}</Title>
+                <Button href={ProjectRoutes.New}>
+                    {t("projects.overview.create")}
+                </Button>
+            </PageHeader>
             <Table
                 header={
                     <TableHeader>
-                        <th>{t("fields.id")}</th>
                         <th>{t("fields.name")}</th>
                         <th>{t("fields.client")}</th>
+                        <th></th>
                     </TableHeader>
                 }>
                 {projects.map((project) => (
                     <TableRow key={project.id}>
-                        <td>{project.id}</td>
                         <td>
                             <Link
                                 to={route(ProjectRoutes.Detail, {
@@ -53,6 +72,14 @@ const ProjectsOverviewScreen = () => {
                                 })}>
                                 {project.client.name}
                             </Link>
+                        </td>
+                        <td>
+                            <DeleteButton
+                                size="sm"
+                                scope="projects"
+                                id={project.id}
+                                onSuccess={handleProjectDelete}
+                            />
                         </td>
                     </TableRow>
                 ))}

@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import { getValidationErrors } from "../helpers/validation";
 
 const useForm = (initialSchema, initialData) => {
     const [isTouched, setIsTouched] = useState(false);
     const [values, setValues] = useState({ ...initialData });
     const [errors, setErrors] = useState({});
-
+    // we don't listen to schema changes
     const schemaRef = useRef(initialSchema);
 
     const handleChange = (e) => {
@@ -34,6 +34,8 @@ const useForm = (initialSchema, initialData) => {
         }
     }, []);
 
+    // wrapper method for handling submit
+    // this way, we don't have to pass a success callback in useForm constructor
     const handleSubmit = (callback) => async (e) => {
         e.preventDefault();
         setIsTouched(true);
@@ -46,13 +48,14 @@ const useForm = (initialSchema, initialData) => {
         if (isTouched) {
             validate(values);
         }
-    }, [validate, values, isTouched]);
+    }, [validate, isTouched, values]);
 
     return {
+        isTouched,
         values,
         errors,
-        handleSubmit,
         handleChange,
+        handleSubmit,
     };
 };
 

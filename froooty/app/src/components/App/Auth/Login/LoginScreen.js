@@ -1,7 +1,7 @@
 import useForm from "../../../../core/hooks/useForm";
 import useMutation from "../../../../core/hooks/useMutation";
 import Alert from "../../../Design/Alert";
-import Button from "../../../Design/Button";
+import Button from "../../../Design/Buttons/Button";
 import Container from "../../../Design/Container";
 import FormGroup from "../../../Design/Form/FormGroup";
 import Input from "../../../Design/Form/Input";
@@ -15,14 +15,18 @@ const schema = yup.object().shape({
     password: yup.string().required(),
 });
 
+const defaultData = {
+    email: "",
+    password: "",
+};
+
 const LoginScreen = () => {
     const { t } = useTranslation();
     const { login } = useAuthContext();
     const { isLoading, error, mutate } = useMutation();
 
     const { values, errors, handleChange, handleSubmit } = useForm(schema, {
-        email: "",
-        password: "",
+        ...defaultData,
     });
 
     const handleData = (values) => {

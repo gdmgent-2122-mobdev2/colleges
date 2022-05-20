@@ -3,6 +3,10 @@ class AppError extends Error {
         super();
         this.message = String(e);
     }
+
+    toString() {
+        return this.message;
+    }
 }
 
 export default AppError;

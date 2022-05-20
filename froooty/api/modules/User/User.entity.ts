@@ -1,28 +1,36 @@
-import { compare, hash } from "bcrypt";
-import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { BaseEntity } from "../BaseEntity";
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    BeforeInsert,
+    BeforeUpdate,
+    OneToMany,
+} from "typeorm";
+import { hash, compare } from "bcrypt";
 import { UserRole } from "./User.constants";
+import { BaseEntity } from "../BaseEntity";
 import { IsDefined, IsEmail } from "class-validator";
+import Log from "../Log/Log.entity";
 
 @Entity()
 export default class User extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @IsDefined()
+    @IsDefined({ always: true })
     @Column()
     name: string;
 
-    @IsDefined()
+    @IsDefined({ always: true })
     @Column()
     surname: string;
 
-    @IsDefined()
-    @IsEmail()
+    @IsDefined({ always: true })
+    @IsEmail(undefined, { always: true })
     @Column({ unique: true })
     email: string;
 
-    @IsDefined()
+    @IsDefined({ groups: ["create"] })
     @Column({ select: false })
     password: string;
 
@@ -33,7 +41,11 @@ export default class User extends BaseEntity {
     })
     role: UserRole;
 
+    @OneToMany(() => Log, (log) => log.user)
+    logs: Log[];
+
     @BeforeInsert()
+    @BeforeUpdate()
     async hashPassword() {
         if (this.password) {
             this.password = await hash(this.password, 10);
@@ -42,5 +54,9 @@ export default class User extends BaseEntity {
 
     async checkPassword(passwordToCheck: string) {
         return await compare(passwordToCheck, this.password);
+    }
+
+    isAdmin() {
+        return this.role === UserRole.Admin;
     }
 }

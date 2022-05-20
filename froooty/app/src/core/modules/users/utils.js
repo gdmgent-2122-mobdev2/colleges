@@ -8,4 +8,4 @@ const isAdmin = (user) => {
     return user.role === UserRoles.Admin;
 };
 
-export { isAdmin, formatName };
+export { formatName, isAdmin };

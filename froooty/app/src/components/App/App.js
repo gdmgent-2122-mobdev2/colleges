@@ -2,6 +2,7 @@ import { Routes, Route, Navigate, Outlet } from "react-router-dom";
 import {
     AuthRoutes,
     ClientRoutes,
+    LogRoutes,
     ProjectRoutes,
     UserRoutes,
 } from "../../core/routing";
@@ -30,6 +31,9 @@ import UserAddScreen from "./Screens/Users/Add/UserAddScreen";
 import UserDetailLayout from "./Screens/Users/Detail/UserDetailLayout";
 import UserDetailScreen from "./Screens/Users/Detail/UserDetailScreen";
 import UserEditScreen from "./Screens/Users/Edit/UserEditScreen";
+import LogsLayout from "./Screens/Logs/LogsLayout";
+import LogsOverviewScreen from "./Screens/Logs/Overview/LogsOverviewScreen";
+import LogAddScreen from "./Screens/Logs/Add/LogAddScreen";
 
 const App = () => {
     return (
@@ -85,6 +89,14 @@ const App = () => {
                                 element={<ProjectEditScreen />}
                             />
                         </Route>
+                    </Route>
+                    {/* Logs */}
+                    <Route path={LogRoutes.Index} element={<LogsLayout />}>
+                        <Route index element={<LogsOverviewScreen />} />
+                        <Route
+                            path={LogRoutes.New}
+                            element={<LogAddScreen />}
+                        />
                     </Route>
                     {/* Admin */}
                     <Route

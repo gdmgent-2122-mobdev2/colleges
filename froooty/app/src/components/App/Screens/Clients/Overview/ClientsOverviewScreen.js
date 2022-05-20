@@ -1,19 +1,32 @@
 import useFetch from "../../../../../core/hooks/useFetch";
-import LoadingIndicator from "../../../Shared/Generic/LoadingIndicator/LoadingIndicator";
 import Alert from "../../../../Design/Alert";
 import { Link } from "react-router-dom";
 import { route, ClientRoutes } from "../../../../../core/routing";
-import Table from "../../../../Design/Table/Table";
-import TableRow from "../../../../Design/Table/TableRow";
-import TableHeader from "../../../../Design/Table/TableHeader";
-import useTitle from "../../../../../core/hooks/useTitle";
+import LoadingIndicator from "../../../Shared/Generic/LoadingIndicator/LoadingIndicator";
 import { useTranslation } from "react-i18next";
+import Table from "../../../../Design/Table/Table";
+import TableHeader from "../../../../Design/Table/TableHeader";
+import TableRow from "../../../../Design/Table/TableRow";
+import Title from "../../../../Design/Typography/Title";
+import DeleteButton from "../../../Shared/Buttons/DeleteButton";
+import PageHeader from "../../../../Design/PageHeader";
+import Button from "../../../../Design/Buttons/Button";
+import useTitle from "../../../../../core/hooks/useTitle";
 
 const ClientsOverviewScreen = () => {
     const { t } = useTranslation();
-    useTitle(t("clients.overview.title"));
+    const {
+        isLoading,
+        data: clients,
+        error,
+        invalidate,
+    } = useFetch("/clients");
 
-    const { isLoading, data: clients, error } = useFetch("/clients");
+    useTitle(t("clients.title"));
+
+    const handleProjectDelete = () => {
+        invalidate();
+    };
 
     if (isLoading) {
         return <LoadingIndicator />;
@@ -24,19 +37,22 @@ const ClientsOverviewScreen = () => {
 
     return (
         <>
-            <h1>{t("clients.overview.title")}</h1>
-            <Link to={ClientRoutes.New}>{t("clients.overview.create")}</Link>
+            <PageHeader>
+                <Title>{t("clients.overview.title")}</Title>
+                <Button href={ClientRoutes.New}>
+                    {t("clients.overview.create")}
+                </Button>
+            </PageHeader>
             <Table
                 header={
                     <TableHeader>
-                        <th>{t("fields.id")}</th>
                         <th>{t("fields.name")}</th>
                         <th>{t("clients.fields.contact")}</th>
+                        <th></th>
                     </TableHeader>
                 }>
                 {clients.map((client) => (
                     <TableRow key={client.id}>
-                        <td>{client.id}</td>
                         <td>
                             <Link
                                 to={route(ClientRoutes.Detail, {
@@ -47,6 +63,14 @@ const ClientsOverviewScreen = () => {
                         </td>
                         <td>
                             {client.contactName} ({client.contactEmail})
+                        </td>
+                        <td>
+                            <DeleteButton
+                                size="sm"
+                                id={client.id}
+                                scope="clients"
+                                onSuccess={handleProjectDelete}
+                            />
                         </td>
                     </TableRow>
                 ))}

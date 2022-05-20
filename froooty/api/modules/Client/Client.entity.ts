@@ -1,5 +1,4 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { isUndefined } from "util";
 import { BaseEntity } from "../BaseEntity";
 import Project from "../Project/Project.entity";
 import { IsDefined, IsEmail } from "class-validator";
@@ -9,16 +8,16 @@ export default class Client extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @IsDefined()
+    @IsDefined({ always: true })
     @Column()
     name: string;
 
-    @IsDefined()
-    @IsEmail()
+    @IsDefined({ always: true })
+    @IsEmail(undefined, { always: true })
     @Column()
     contactEmail: string;
 
-    @IsDefined()
+    @IsDefined({ always: true })
     @Column()
     contactName: string;
 

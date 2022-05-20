@@ -43,4 +43,9 @@ export const useAuthContext = () => {
     return useContext(AuthContext);
 };
 
+export const useUser = () => {
+    const { auth } = useAuthContext();
+    return auth?.user;
+};
+
 export default AuthProvider;

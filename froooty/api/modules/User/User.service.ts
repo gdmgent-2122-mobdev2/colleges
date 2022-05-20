@@ -1,6 +1,7 @@
+import { AppDataSource } from "../../database/DataSource";
 import User from "./User.entity";
 import { Repository } from "typeorm";
-import { AppDataSource } from "../../database/DataSource";
+import { UserBody } from "./User.types";
 
 export default class UserService {
     private repository: Repository<User>;
@@ -35,12 +36,12 @@ export default class UserService {
         return user;
     };
 
-    create = async (body) => {
+    create = async (body: UserBody) => {
         const user = await this.repository.save(this.repository.create(body));
         return user;
     };
 
-    update = async (id: number, body) => {
+    update = async (id: number, body: UserBody) => {
         let user = await this.findOne(id);
         if (user) {
             user = await this.repository.save({ ...user, ...body });

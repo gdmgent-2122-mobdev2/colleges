@@ -8,10 +8,16 @@ import Table from "../../../../Design/Table/Table";
 import TableHeader from "../../../../Design/Table/TableHeader";
 import TableRow from "../../../../Design/Table/TableRow";
 import { formatName } from "../../../../../core/modules/users/utils";
+import Button from "../../../../Design/Buttons/Button";
+import Title from "../../../../Design/Typography/Title";
+import PageHeader from "../../../../Design/PageHeader";
+import useTitle from "../../../../../core/hooks/useTitle";
 
 const UsersOverviewScreen = () => {
     const { t } = useTranslation();
     const { isLoading, data: users, error } = useFetch("/users");
+
+    useTitle(t("users.title"));
 
     if (isLoading) {
         return <LoadingIndicator />;
@@ -22,8 +28,12 @@ const UsersOverviewScreen = () => {
 
     return (
         <>
-            <h1>{t("users.overview.title")}</h1>
-            <Link to={UserRoutes.New}>{t("users.overview.create")}</Link>
+            <PageHeader>
+                <Title>{t("users.overview.title")}</Title>
+                <Button href={UserRoutes.New}>
+                    {t("users.overview.create")}
+                </Button>
+            </PageHeader>
             <Table
                 header={
                     <TableHeader>

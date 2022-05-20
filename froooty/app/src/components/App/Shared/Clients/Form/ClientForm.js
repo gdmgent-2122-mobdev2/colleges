@@ -1,4 +1,4 @@
-import Button from "../../../../Design/Button";
+import Button from "../../../../Design/Buttons/Button";
 import FormGroup from "../../../../Design/Form/FormGroup";
 import Input from "../../../../Design/Form/Input";
 import Label from "../../../../Design/Form/Label";
@@ -12,7 +12,7 @@ const schema = yup.object().shape({
     contactEmail: yup.string().email().required(),
 });
 
-const ClientForm = ({ initialData = {}, isDisabled, onSubmit, label }) => {
+const ClientForm = ({ initialData = {}, disabled, onSubmit, label }) => {
     const { t } = useTranslation();
     const { values, errors, handleChange, handleSubmit } = useForm(schema, {
         name: "",
@@ -32,7 +32,7 @@ const ClientForm = ({ initialData = {}, isDisabled, onSubmit, label }) => {
                 <Input
                     name="name"
                     value={values.name}
-                    disabled={isDisabled}
+                    disabled={disabled}
                     onChange={handleChange}
                     error={errors.name}
                 />
@@ -43,7 +43,7 @@ const ClientForm = ({ initialData = {}, isDisabled, onSubmit, label }) => {
                 <Input
                     name="contactName"
                     value={values.contactName}
-                    disabled={isDisabled}
+                    disabled={disabled}
                     onChange={handleChange}
                     error={errors.contactName}
                 />
@@ -53,12 +53,12 @@ const ClientForm = ({ initialData = {}, isDisabled, onSubmit, label }) => {
                 <Input
                     name="contactEmail"
                     value={values.contactEmail}
-                    disabled={isDisabled}
+                    disabled={disabled}
                     onChange={handleChange}
                     error={errors.contactEmail}
                 />
             </FormGroup>
-            <Button type="submit" disabled={isDisabled}>
+            <Button type="submit" disabled={disabled}>
                 {label}
             </Button>
         </form>

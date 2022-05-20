@@ -7,6 +7,7 @@ const Input = ({
     onChange,
     value,
     error,
+    children,
     disabled,
     ...rest
 }) => {
@@ -21,6 +22,7 @@ const Input = ({
                 onChange={onChange}
                 {...rest}
             />
+            {children}
             {error && <div className="invalid-feedback">{error}</div>}
         </>
     );

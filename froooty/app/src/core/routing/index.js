@@ -17,6 +17,11 @@ const ProjectRoutes = {
     Edit: "/projects/:id/edit",
 };
 
+const LogRoutes = {
+    Index: "/logs",
+    New: "/logs/new",
+};
+
 const UserRoutes = {
     Index: "/users",
     New: "/users/new",
@@ -33,4 +38,4 @@ export const route = (path, options = {}) => {
     return path;
 };
 
-export { AuthRoutes, ClientRoutes, ProjectRoutes, UserRoutes };
+export { AuthRoutes, ClientRoutes, UserRoutes, LogRoutes, ProjectRoutes };

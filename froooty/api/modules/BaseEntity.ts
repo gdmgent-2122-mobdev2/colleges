@@ -1,3 +1,4 @@
+import { validateOrReject } from "class-validator";
 import {
     BeforeInsert,
     BeforeUpdate,
@@ -6,7 +7,6 @@ import {
     UpdateDateColumn,
 } from "typeorm";
 import ValidationError from "../errors/ValidationError";
-import { validateOrReject } from "class-validator";
 
 export abstract class BaseEntity {
     @CreateDateColumn({ select: false })
@@ -19,10 +19,23 @@ export abstract class BaseEntity {
     deletedAt: Date;
 
     @BeforeInsert()
-    @BeforeUpdate()
-    async validate() {
+    async validateCreate() {
         try {
-            await validateOrReject(this);
+            await validateOrReject(this, { groups: ["create"] });
+        } catch (errors) {
+            // collect validation errors in object
+            const validationErrors = {};
+            for (const e of errors) {
+                validationErrors[e.property] = e.constraints;
+            }
+            throw new ValidationError(validationErrors);
+        }
+    }
+
+    @BeforeUpdate()
+    async validateUpdate() {
+        try {
+            await validateOrReject(this, { groups: ["update"] });
         } catch (errors) {
             // collect validation errors in object
             const validationErrors = {};

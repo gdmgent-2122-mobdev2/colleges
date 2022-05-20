@@ -12,7 +12,11 @@ export default class ClientService {
     }
 
     all = async () => {
-        const clients = await this.repository.find();
+        const clients = await this.repository.find({
+            order: {
+                name: "ASC",
+            },
+        });
         return clients;
     };
 

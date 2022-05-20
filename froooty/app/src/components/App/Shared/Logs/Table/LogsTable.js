@@ -7,7 +7,7 @@ import TableHeader from "../../../../Design/Table/TableHeader";
 import TableRow from "../../../../Design/Table/TableRow";
 import Button from "../../../../Design/Buttons/Button";
 import { BiPencil } from "react-icons/bi";
-import DeleteButton from "../../Buttons/DeleteButton";
+import DeleteButton from "../../Generic/Buttons/DeleteButton";
 
 const defaultOptions = {
     showUser: true,

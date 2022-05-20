@@ -8,7 +8,7 @@ import Table from "../../../../Design/Table/Table";
 import TableHeader from "../../../../Design/Table/TableHeader";
 import TableRow from "../../../../Design/Table/TableRow";
 import Title from "../../../../Design/Typography/Title";
-import DeleteButton from "../../../Shared/Buttons/DeleteButton";
+import DeleteButton from "../../../Shared/Generic/Buttons/DeleteButton";
 import PageHeader from "../../../../Design/PageHeader";
 import Button from "../../../../Design/Buttons/Button";
 import useTitle from "../../../../../core/hooks/useTitle";

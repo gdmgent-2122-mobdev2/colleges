@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import Table from "../../../../Design/Table/Table";
 import TableHeader from "../../../../Design/Table/TableHeader";
 import TableRow from "../../../../Design/Table/TableRow";
-import DeleteButton from "../../../Shared/Buttons/DeleteButton";
+import DeleteButton from "../../../Shared/Generic/Buttons/DeleteButton";
 import Button from "../../../../Design/Buttons/Button";
 import PageHeader from "../../../../Design/PageHeader";
 import Title from "../../../../Design/Typography/Title";

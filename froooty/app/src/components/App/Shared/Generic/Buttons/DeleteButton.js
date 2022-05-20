@@ -1,4 +1,4 @@
-import Button from "../../../Design/Buttons/Button";
+import Button from "../../../../Design/Buttons/Button";
 import { BiTrash } from "react-icons/bi";
 import PropTypes from "prop-types";
 

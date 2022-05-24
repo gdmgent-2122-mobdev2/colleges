@@ -7,9 +7,13 @@ const AuthContext = createContext();
 const getAuthFromStorage = () => {
     const auth = localStorage.getItem(KEY);
     if (auth) {
-        return JSON.parse(auth);
+        return JSON.parse(atob(auth));
     }
     return null;
+};
+
+const saveAuthToStorage = (auth) => {
+    localStorage.setItem(KEY, btoa(JSON.stringify(auth)));
 };
 
 const AuthProvider = ({ children }) => {
@@ -17,7 +21,7 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         if (auth) {
-            localStorage.setItem(KEY, JSON.stringify(auth));
+            saveAuthToStorage(auth);
         } else {
             localStorage.removeItem(KEY);
         }

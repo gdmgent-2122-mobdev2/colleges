@@ -12,7 +12,7 @@ export default class ProjectService {
 
     all = async () => {
         const projects = await this.projectRepository.find({
-            relations: ["client"],
+            relations: ["client", "logs", "logs.project", "logs.user"],
             order: {
                 name: "ASC",
             },
@@ -23,7 +23,7 @@ export default class ProjectService {
     findOne = async (id: number) => {
         const project = await this.projectRepository.findOne({
             where: { id },
-            relations: ["client"],
+            relations: ["client", "logs", "logs.user", "logs.project"],
         });
         return project;
     };

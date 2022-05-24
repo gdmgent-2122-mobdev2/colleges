@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import Button from "../Buttons/Button";
 import Input from "./Input";
 import InputGroup from "./InputGroup";

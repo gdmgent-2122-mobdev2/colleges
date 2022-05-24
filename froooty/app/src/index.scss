@@ -16,3 +16,7 @@ $primary: #1232a0;
 
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
+
+table .btn + .btn {
+    margin-left: 0.5rem;
+}

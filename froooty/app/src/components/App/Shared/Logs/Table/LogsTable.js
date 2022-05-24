@@ -8,6 +8,11 @@ import TableRow from "../../../../Design/Table/TableRow";
 import Button from "../../../../Design/Buttons/Button";
 import { BiPencil } from "react-icons/bi";
 import DeleteButton from "../../Generic/Buttons/DeleteButton";
+import CreateEditLogDialog from "../Form/CreateEditLogDialog";
+import { useState } from "react";
+import { format, parse } from "date-fns";
+import { DATE_API_FORMAT } from "../../../../../core/modules/logs/constants";
+import { formatMinutesToString } from "../../../../../core/modules/logs/utils";
 
 const defaultOptions = {
     showUser: true,
@@ -15,9 +20,19 @@ const defaultOptions = {
 };
 
 const LogsTable = ({ logs, options = {}, onRefresh }) => {
+    const [currentLog, setCurrentLog] = useState();
     const { t } = useTranslation();
 
     const handleDelete = () => {
+        onRefresh();
+    };
+
+    const handleEditClick = (log) => {
+        setCurrentLog(log);
+    };
+
+    const handleUpdate = () => {
+        setCurrentLog(null);
         onRefresh();
     };
 
@@ -38,8 +53,13 @@ const LogsTable = ({ logs, options = {}, onRefresh }) => {
                 }>
                 {logs.map((log) => (
                     <TableRow key={log.id}>
-                        <td>{log.date}</td>
-                        <td>{log.time}</td>
+                        <td>
+                            {format(
+                                parse(log.date, DATE_API_FORMAT, new Date()),
+                                "dd/MM/yy"
+                            )}
+                        </td>
+                        <td>{formatMinutesToString(log.time)}</td>
                         <td>{log.description}</td>
                         {options.showProject && (
                             <td>
@@ -55,7 +75,7 @@ const LogsTable = ({ logs, options = {}, onRefresh }) => {
                         <td className="d-flex">
                             <Button
                                 size="sm"
-                                onClick={() => {}}
+                                onClick={() => handleEditClick(log)}
                                 color="secondary">
                                 <BiPencil />
                             </Button>
@@ -69,6 +89,14 @@ const LogsTable = ({ logs, options = {}, onRefresh }) => {
                     </TableRow>
                 ))}
             </Table>
+            {currentLog && (
+                <CreateEditLogDialog
+                    onDismiss={() => setCurrentLog(null)}
+                    onSuccess={() => handleUpdate()}
+                    log={currentLog}
+                    options={options}
+                />
+            )}
         </>
     );
 };

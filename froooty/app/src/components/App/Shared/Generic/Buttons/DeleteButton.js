@@ -36,7 +36,7 @@ const DeleteButton = ({ onSuccess, id, scope, disabled, ...rest }) => {
 DeleteButton.propTypes = {
     onClick: PropTypes.func,
     disabled: PropTypes.bool,
-    size: PropTypes.oneOf(["sm", "lg", "md"]),
+    ...Button.propTypes,
 };
 
 export default DeleteButton;

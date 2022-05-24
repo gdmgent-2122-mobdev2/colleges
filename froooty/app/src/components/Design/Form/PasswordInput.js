@@ -24,11 +24,7 @@ const PasswordInput = (props) => {
 };
 
 PasswordInput.propTypes = {
-    label: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    value: PropTypes.string,
-    disabled: PropTypes.bool,
-    onChange: PropTypes.func.isRequired,
+    ...Input.propTypes,
 };
 
 export default PasswordInput;

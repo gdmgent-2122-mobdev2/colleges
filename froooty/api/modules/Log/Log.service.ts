@@ -87,13 +87,4 @@ export default class LogService {
         }
         return log;
     };
-
-    deleteAllForProject = async (projectId: number) => {
-        const logs = await this.logRepository.find({
-            where: {
-                project: { id: projectId },
-            },
-        });
-        await this.logRepository.softRemove(logs);
-    };
 }

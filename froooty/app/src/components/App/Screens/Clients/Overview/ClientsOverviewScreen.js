@@ -24,7 +24,7 @@ const ClientsOverviewScreen = () => {
 
     useTitle(t("clients.title"));
 
-    const handleProjectDelete = () => {
+    const handleClientDelete = () => {
         invalidate();
     };
 
@@ -69,7 +69,7 @@ const ClientsOverviewScreen = () => {
                                 size="sm"
                                 id={client.id}
                                 scope="clients"
-                                onSuccess={handleProjectDelete}
+                                onSuccess={handleClientDelete}
                             />
                         </td>
                     </TableRow>

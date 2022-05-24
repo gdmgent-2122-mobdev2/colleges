@@ -18,9 +18,26 @@ export default class LogService {
         return logs;
     };
 
+    allForUser = async (userId: number) => {
+        const logs = await this.logRepository.find({
+            relations: ["user", "project"],
+            where: { user: { id: userId } },
+            order: { date: "ASC" },
+        });
+        return logs;
+    };
+
     findOne = async (id: number) => {
         const log = await this.logRepository.findOne({
             where: { id },
+            relations: ["user", "project"],
+        });
+        return log;
+    };
+
+    findOneForUser = async (id: number, userId: number) => {
+        const log = await this.logRepository.findOne({
+            where: { id, user: { id: userId } },
             relations: ["user", "project"],
         });
         return log;
@@ -44,8 +61,27 @@ export default class LogService {
         return log;
     };
 
+    updateForUser = async (id: number, body: LogBody, userId: number) => {
+        let log = await this.findOneForUser(id, userId);
+        if (log) {
+            log = await this.logRepository.save({
+                ...log,
+                ...body,
+            });
+        }
+        return log;
+    };
+
     delete = async (id: number) => {
         let log = await this.findOne(id);
+        if (log) {
+            await this.logRepository.softDelete({ id });
+        }
+        return log;
+    };
+
+    deleteForUser = async (id: number, userId: number) => {
+        let log = await this.findOneForUser(id, userId);
         if (log) {
             await this.logRepository.softDelete({ id });
         }

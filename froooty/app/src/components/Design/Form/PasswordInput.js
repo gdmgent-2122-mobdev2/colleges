@@ -2,14 +2,21 @@ import PropTypes from "prop-types";
 import Button from "../Buttons/Button";
 import Input from "./Input";
 import InputGroup from "./InputGroup";
-import { BiShow } from "react-icons/bi";
+import { BiShow, BiHide } from "react-icons/bi";
+import { useState } from "react";
 
 const PasswordInput = (props) => {
+    const [isVisible, setIsVisible] = useState(true);
+
+    const handleToggleClick = () => {
+        setIsVisible(!isVisible);
+    };
+
     return (
         <InputGroup>
-            <Input type="password" {...props}>
-                <Button color="secondary" onClick={() => {}}>
-                    <BiShow />
+            <Input type={isVisible ? "text" : "password"} {...props}>
+                <Button color="secondary" onClick={handleToggleClick}>
+                    {isVisible ? <BiHide /> : <BiShow />}
                 </Button>
             </Input>
         </InputGroup>

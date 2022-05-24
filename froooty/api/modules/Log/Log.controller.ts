@@ -18,7 +18,9 @@ export default class LogController {
     }
 
     all = async (req: AuthRequest, res: Response, next: NextFunction) => {
-        const logs = await this.logService.all();
+        const logs = req.user.isAdmin()
+            ? await this.logService.all()
+            : await this.logService.allForUser(req.user.id);
         return res.json(logs);
     };
 
@@ -27,7 +29,12 @@ export default class LogController {
         res: Response,
         next: NextFunction
     ) => {
-        const log = await this.logService.findOne(parseInt(req.params.id));
+        const log = req.user.isAdmin()
+            ? await this.logService.findOne(parseInt(req.params.id))
+            : await this.logService.findOneForUser(
+                  parseInt(req.params.id),
+                  req.user.id
+              );
         if (!log) {
             next(new NotFoundError());
         }
@@ -40,6 +47,9 @@ export default class LogController {
         next: NextFunction
     ) => {
         const { body } = req;
+        if (!req.user.isAdmin()) {
+            body.userId = req.user.id;
+        }
         // check relations
         if (body.userId) {
             body.user = await this.userService.findOne(body.userId);
@@ -58,6 +68,9 @@ export default class LogController {
         next: NextFunction
     ) => {
         const { body } = req;
+        if (!req.user.isAdmin()) {
+            body.userId = req.user.id;
+        }
         // check relations
         if (body.userId) {
             body.user = await this.userService.findOne(body.userId);
@@ -66,7 +79,13 @@ export default class LogController {
             body.project = await this.projectService.findOne(body.projectId);
         }
         // update project
-        const log = await this.logService.update(parseInt(req.params.id), body);
+        const log = req.user.isAdmin()
+            ? await this.logService.update(parseInt(req.params.id), body)
+            : await this.logService.updateForUser(
+                  parseInt(req.params.id),
+                  body,
+                  req.user.id
+              );
         if (!log) {
             next(new NotFoundError());
         }
@@ -78,7 +97,12 @@ export default class LogController {
         res: Response,
         next: NextFunction
     ) => {
-        const log = await this.logService.delete(parseInt(req.params.id));
+        const log = req.user.isAdmin()
+            ? await this.logService.delete(parseInt(req.params.id))
+            : await this.logService.deleteForUser(
+                  parseInt(req.params.id),
+                  req.user.id
+              );
         if (!log) {
             next(new NotFoundError());
         }

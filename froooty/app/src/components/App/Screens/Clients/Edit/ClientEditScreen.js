@@ -22,6 +22,7 @@ const ClientEditScreen = () => {
         mutate(`${process.env.REACT_APP_API_URL}/clients`, {
             method: "POST",
             data,
+            multipart: true,
             onSuccess: () => {
                 onClientUpdate();
                 navigate(route(ClientRoutes.Detail, { id: client.id }));

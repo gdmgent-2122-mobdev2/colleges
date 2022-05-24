@@ -7,12 +7,14 @@ const AuthContext = createContext();
 const getAuthFromStorage = () => {
     const auth = localStorage.getItem(KEY);
     if (auth) {
+        // base64 encode
         return JSON.parse(atob(auth));
     }
     return null;
 };
 
 const saveAuthToStorage = (auth) => {
+    // base64 decode
     localStorage.setItem(KEY, btoa(JSON.stringify(auth)));
 };
 

@@ -11,13 +11,9 @@ const formatMinutesToString = (minutes) => {
 // e.g. "01:30" to 90
 const parseStringToMinutes = (string) => {
     const parts = string.split(":");
-    if (parts.length === 2) {
-        const hours = parseInt(parts[0]);
-        const minutes = parseInt(parts[1]);
-        return hours * 60 + minutes;
-    } else {
-        return 0;
-    }
+    const hours = parseInt(parts[0]);
+    const minutes = parts.length > 1 ? parseInt(parts[1]) : 0;
+    return hours * 60 + minutes;
 };
 
 export { formatMinutesToString, parseStringToMinutes };

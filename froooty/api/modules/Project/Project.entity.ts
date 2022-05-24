@@ -9,6 +9,7 @@ import { BaseEntity } from "../BaseEntity";
 import Client from "../Client/Client.entity";
 import { IsDefined } from "class-validator";
 import Log from "../Log/Log.entity";
+import LogService from "../Log/Log.service";
 
 @Entity()
 export default class Project extends BaseEntity {
@@ -22,6 +23,8 @@ export default class Project extends BaseEntity {
     @ManyToOne(() => Client, (client) => client.projects)
     client: Client;
 
-    @OneToMany(() => Log, (log) => log.project)
+    @OneToMany(() => Log, (log) => log.project, {
+        cascade: true,
+    })
     logs: Log[];
 }

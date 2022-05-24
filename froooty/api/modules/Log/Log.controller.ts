@@ -37,6 +37,7 @@ export default class LogController {
               );
         if (!log) {
             next(new NotFoundError());
+            return;
         }
         return res.json(log);
     };
@@ -88,6 +89,7 @@ export default class LogController {
               );
         if (!log) {
             next(new NotFoundError());
+            return;
         }
         return res.json(log);
     };
@@ -105,6 +107,7 @@ export default class LogController {
               );
         if (!log) {
             next(new NotFoundError());
+            return;
         }
         return res.json({});
     };

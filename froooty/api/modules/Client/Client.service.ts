@@ -39,9 +39,13 @@ export default class ClientService {
     };
 
     delete = async (id: number) => {
-        let client = await this.findOne(id);
+        // make sure the findOne has relation "projects" and "projects.logs" -> due to "cascade: true" projects and logs will be deleted as well
+        let client = await this.repository.findOne({
+            where: { id },
+            relations: ["projects", "projects.logs"],
+        });
         if (client) {
-            await this.repository.softDelete({ id });
+            await this.repository.softRemove(client);
         }
         return client;
     };

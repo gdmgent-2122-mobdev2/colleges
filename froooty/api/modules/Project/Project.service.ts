@@ -49,7 +49,7 @@ export default class ProjectService {
     delete = async (id: number) => {
         let project = await this.findOne(id);
         if (project) {
-            await this.projectRepository.softDelete({ id });
+            await this.projectRepository.softRemove(project);
         }
         return project;
     };

@@ -30,6 +30,7 @@ export default class ProjectController {
         );
         if (!project) {
             next(new NotFoundError());
+            return;
         }
         return res.json(project);
     };
@@ -66,6 +67,7 @@ export default class ProjectController {
         );
         if (!project) {
             next(new NotFoundError());
+            return;
         }
         return res.json(project);
     };
@@ -80,6 +82,7 @@ export default class ProjectController {
         );
         if (!project) {
             next(new NotFoundError());
+            return;
         }
         return res.json({});
     };

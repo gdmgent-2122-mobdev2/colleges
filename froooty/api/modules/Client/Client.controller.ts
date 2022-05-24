@@ -25,6 +25,7 @@ export default class ClientController {
         );
         if (!client) {
             next(new NotFoundError());
+            return;
         }
         return res.json(client);
     };
@@ -49,6 +50,7 @@ export default class ClientController {
         );
         if (!client) {
             next(new NotFoundError());
+            return;
         }
         return res.json(client);
     };
@@ -61,6 +63,7 @@ export default class ClientController {
         const client = await this.clientService.delete(parseInt(req.params.id));
         if (!client) {
             next(new NotFoundError());
+            return;
         }
         return res.json({});
     };

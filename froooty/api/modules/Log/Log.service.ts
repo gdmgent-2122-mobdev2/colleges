@@ -75,7 +75,7 @@ export default class LogService {
     delete = async (id: number) => {
         let log = await this.findOne(id);
         if (log) {
-            await this.logRepository.softDelete({ id });
+            await this.logRepository.softRemove(log);
         }
         return log;
     };
@@ -83,8 +83,17 @@ export default class LogService {
     deleteForUser = async (id: number, userId: number) => {
         let log = await this.findOneForUser(id, userId);
         if (log) {
-            await this.logRepository.softDelete({ id });
+            await this.logRepository.softRemove(log);
         }
         return log;
+    };
+
+    deleteAllForProject = async (projectId: number) => {
+        const logs = await this.logRepository.find({
+            where: {
+                project: { id: projectId },
+            },
+        });
+        await this.logRepository.softRemove(logs);
     };
 }

@@ -1,7 +1,14 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+    BeforeSoftRemove,
+    Column,
+    Entity,
+    OneToMany,
+    PrimaryGeneratedColumn,
+} from "typeorm";
 import { BaseEntity } from "../BaseEntity";
 import Project from "../Project/Project.entity";
 import { IsDefined, IsEmail } from "class-validator";
+import ProjectService from "../Project/Project.service";
 
 @Entity()
 export default class Client extends BaseEntity {
@@ -21,6 +28,8 @@ export default class Client extends BaseEntity {
     @Column()
     contactName: string;
 
-    @OneToMany(() => Project, (project) => project.client)
+    @OneToMany(() => Project, (project) => project.client, {
+        cascade: true,
+    })
     projects: Project[];
 }

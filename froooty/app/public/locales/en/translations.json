@@ -76,6 +76,7 @@
     "fields": {
         "id": "Id",
         "email": "Email",
+        "avatar": "Avatar",
         "name": "Name",
         "surname": "Surname",
         "password": "Password",

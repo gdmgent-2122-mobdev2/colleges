@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response, Router } from "express";
+import * as express from "express";
 import NotFoundError from "../errors/NotFoundError";
 import { authJwt, authLocal, withRole } from "../middleware/auth";
 import ClientController from "../modules/Client/Client.controller";
@@ -7,6 +8,8 @@ import ProjectController from "../modules/Project/Project.controller";
 import AuthController from "../modules/User/Auth.controller";
 import { UserRole } from "../modules/User/User.constants";
 import UserController from "../modules/User/User.controller";
+import * as path from "path";
+import { UPLOAD_FOLDER } from "../constants";
 
 // catch error since Express doesn't catch errors in async functions
 // this will catch the controller method + will send the error through next() method
@@ -76,6 +79,9 @@ const registerAuthenticatedRoutes = (router: Router) => {
 };
 
 const registerRoutes = (app: Router) => {
+    // public folder
+    app.use("/public", express.static(path.resolve(__dirname, "../public")));
+
     // onboarding routes (login, ...)
     registerOnboardingRoutes(app);
 

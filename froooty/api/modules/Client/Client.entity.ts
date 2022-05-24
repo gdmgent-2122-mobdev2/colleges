@@ -28,6 +28,9 @@ export default class Client extends BaseEntity {
     @Column()
     contactName: string;
 
+    @Column({ nullable: true })
+    avatar: string;
+
     @OneToMany(() => Project, (project) => project.client, {
         cascade: true,
     })

@@ -5,6 +5,7 @@ import Label from "../../../../Design/Form/Label";
 import * as yup from "yup";
 import useForm from "../../../../../core/hooks/useForm";
 import { useTranslation } from "react-i18next";
+import FileInput from "../../../../Design/Form/FileInput";
 
 const schema = yup.object().shape({
     name: yup.string().required(),
@@ -35,6 +36,16 @@ const ClientForm = ({ initialData = {}, disabled, onSubmit, label }) => {
                     disabled={disabled}
                     onChange={handleChange}
                     error={errors.name}
+                />
+            </FormGroup>
+            <FormGroup>
+                <Label htmlFor="avatar">{t("fields.avatar")}</Label>
+                <FileInput
+                    name="avatar"
+                    value={values.avatar}
+                    disabled={disabled}
+                    onChange={handleChange}
+                    error={errors.avatar}
                 />
             </FormGroup>
             <h3>{t("clients.fields.contact")}</h3>

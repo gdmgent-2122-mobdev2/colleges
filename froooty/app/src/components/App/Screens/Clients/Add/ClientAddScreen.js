@@ -21,6 +21,7 @@ const ClientAddScreen = () => {
         mutate(`${process.env.REACT_APP_API_URL}/clients`, {
             method: "POST",
             data,
+            multipart: true,
             onSuccess: () => {
                 navigate(ClientRoutes.Index);
             },

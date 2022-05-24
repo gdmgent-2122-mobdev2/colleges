@@ -8,4 +8,8 @@ const handleErrors = async (res) => {
     return await res.json();
 };
 
-export { handleErrors };
+const getImagePath = (path) => {
+    return `${process.env.REACT_APP_API_URL}/${path}`;
+};
+
+export { handleErrors, getImagePath };

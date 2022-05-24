@@ -12,6 +12,8 @@ import DeleteButton from "../../../Shared/Generic/Buttons/DeleteButton";
 import PageHeader from "../../../../Design/PageHeader";
 import Button from "../../../../Design/Buttons/Button";
 import useTitle from "../../../../../core/hooks/useTitle";
+import isVoid from "../../../../../core/helpers/isVoid";
+import { getImagePath } from "../../../../../core/helpers/api";
 
 const ClientsOverviewScreen = () => {
     const { t } = useTranslation();
@@ -46,6 +48,7 @@ const ClientsOverviewScreen = () => {
             <Table
                 header={
                     <TableHeader>
+                        <th></th>
                         <th>{t("fields.name")}</th>
                         <th>{t("clients.fields.contact")}</th>
                         <th></th>
@@ -53,6 +56,15 @@ const ClientsOverviewScreen = () => {
                 }>
                 {clients.map((client) => (
                     <TableRow key={client.id}>
+                        <td>
+                            {!isVoid(client.avatar) && (
+                                <img
+                                    style={{ width: "3rem", height: "3rem" }}
+                                    src={getImagePath(client.avatar)}
+                                    alt={client.name}
+                                />
+                            )}
+                        </td>
                         <td>
                             <Link
                                 to={route(ClientRoutes.Detail, {

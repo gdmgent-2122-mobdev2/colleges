@@ -10,20 +10,36 @@ const useMutation = () => {
     const mutate = async (url, options = {}) => {
         setIsLoading(true);
 
-        const headers = {
-            "accept": "application/json",
-            "content-type": "application/json",
-        };
+        let headers = {};
+        if (!options.multipart) {
+            headers = {
+                "accept": "application/json",
+                "content-type": "application/json",
+            };
+        }
 
         try {
-            const data = await authFetch(url, {
+            let body;
+            let data = options.data ?? {};
+            console.log(options);
+            if (options.multipart) {
+                body = new FormData();
+                for (const name in data) {
+                    console.log(name);
+                    body.append(name, data[name]);
+                }
+                console.log("multipart", body);
+            } else {
+                body = JSON.stringify(data);
+            }
+            const result = await authFetch(url, {
                 method: options.method ?? "POST",
                 headers: headers,
-                body: JSON.stringify(options.data ?? {}),
+                body: body,
             });
 
             if (options.onSuccess) {
-                options.onSuccess(data);
+                options.onSuccess(result);
             } else {
                 setIsLoading(false);
             }

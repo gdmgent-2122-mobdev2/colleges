@@ -9,7 +9,6 @@ import AuthController from "../modules/User/Auth.controller";
 import { UserRole } from "../modules/User/User.constants";
 import UserController from "../modules/User/User.controller";
 import * as path from "path";
-import { UPLOAD_FOLDER } from "../constants";
 
 // catch error since Express doesn't catch errors in async functions
 // this will catch the controller method + will send the error through next() method

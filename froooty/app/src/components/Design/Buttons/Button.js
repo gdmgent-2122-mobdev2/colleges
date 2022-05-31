@@ -12,7 +12,6 @@ const Button = ({
 }) => {
     const props = {
         className: `btn btn-${color} btn-${size}`,
-        onClick: onClick,
         disabled: disabled,
     };
     if (href) {
@@ -23,7 +22,7 @@ const Button = ({
         );
     } else {
         return (
-            <button type={type} {...props}>
+            <button type={type} onClick={onClick} {...props}>
                 {children}
             </button>
         );

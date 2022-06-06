@@ -26,7 +26,7 @@
     },
     "scripts": {
         "start": "nodemon index.ts",
-        "prod": "tsc && cp -i -v -r public build && node build/index.js"
+        "prod": "tsc && cp -v -r public build && node build/index.js"
     },
     "devDependencies": {
         "@types/bcrypt": "^5.0.0",

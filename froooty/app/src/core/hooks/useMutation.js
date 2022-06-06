@@ -1,4 +1,6 @@
 import { useState } from "react";
+import ApiError from "../error/ApiError";
+import AppError from "../error/AppError";
 import useAuthApi from "./useAuthApi";
 
 const useMutation = () => {
@@ -21,14 +23,11 @@ const useMutation = () => {
         try {
             let body;
             let data = options.data ?? {};
-            console.log(options);
             if (options.multipart) {
                 body = new FormData();
                 for (const name in data) {
-                    console.log(name);
                     body.append(name, data[name]);
                 }
-                console.log("multipart", body);
             } else {
                 body = JSON.stringify(data);
             }
@@ -47,8 +46,10 @@ const useMutation = () => {
             if (options.onError) {
                 options.onError(String(error));
             } else {
+                console.log(error);
+                console.log(error.toString());
                 setIsLoading(false);
-                setError(String(error));
+                setError(error.toString());
             }
         }
     };

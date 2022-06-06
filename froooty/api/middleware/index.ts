@@ -4,7 +4,7 @@ import * as helmet from "helmet";
 import { Application, NextFunction, Request, Response, Router } from "express";
 import BaseError from "../errors/BaseError";
 import { QueryFailedError, TypeORMError } from "typeorm";
-import fileUpload = require("express-fileupload");
+import * as fileUpload from "express-fileupload";
 
 const registerMiddleware = (app: Router) => {
     // use CORS middleware

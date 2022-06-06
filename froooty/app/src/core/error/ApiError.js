@@ -29,7 +29,7 @@ class ApiError extends Error {
     }
 
     toString() {
-        if (this.errors) {
+        if (this.errors && Object.keys(this.errors).length > 0) {
             return getErrorMessages(this.errors);
         }
         return this.message;
@@ -39,5 +39,4 @@ class ApiError extends Error {
         return this.statusCode === 401;
     }
 }
-
 export default ApiError;

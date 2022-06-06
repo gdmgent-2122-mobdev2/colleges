@@ -8,7 +8,6 @@ import {
 import { BaseEntity } from "../BaseEntity";
 import Project from "../Project/Project.entity";
 import { IsDefined, IsEmail } from "class-validator";
-import ProjectService from "../Project/Project.service";
 
 @Entity()
 export default class Client extends BaseEntity {

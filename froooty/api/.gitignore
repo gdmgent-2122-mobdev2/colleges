@@ -2,3 +2,5 @@
 node_modules
 public/uploads/**
 !public/uploads/.gitkeep
+build/**
+!build/public/uploads/.gitkeep

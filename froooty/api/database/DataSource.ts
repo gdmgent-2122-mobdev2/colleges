@@ -5,6 +5,15 @@ import Log from "../modules/Log/Log.entity";
 import Project from "../modules/Project/Project.entity";
 import User from "../modules/User/User.entity";
 
+let settings = {};
+if (process.env.ENV === "production") {
+    settings = {
+        ssl: {
+            rejectUnauthorized: false,
+        },
+    };
+}
+
 export const AppDataSource = new DataSource({
     type: "postgres",
     host: process.env.DB_HOST,
@@ -17,4 +26,11 @@ export const AppDataSource = new DataSource({
     entities: [Client, User, Project, Log],
     migrations: [],
     subscribers: [],
+    ...(process.env.ENV === "production"
+        ? {
+              ssl: {
+                  rejectUnauthorized: false,
+              },
+          }
+        : {}),
 });
